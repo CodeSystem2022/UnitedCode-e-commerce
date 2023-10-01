@@ -1,0 +1,28 @@
+/* Estilos generales */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* *Falta fuente* */
+
+a {
+    text-decoration: none;
+}
+li {
+    list-style: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Variable de los colores */
+:root{
+    --black: #000000;
+    --white: #FFFF;
+    --color1: #A30D57;
+    --color2: #C23348;
+    --color3: #EFB5B5;
+}
