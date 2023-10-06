@@ -1,0 +1,70 @@
+/* Estilos generales */
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 20px 0;
+  }
+  
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .footer-column {
+    flex: 1;
+    margin: 0 10px;
+  }
+  
+  /* Estilos para h2 */
+  .footer-column h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para enlaces */
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-column ul li {
+    margin-bottom: 5px;
+  }
+  
+  .footer-column ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  /* Estilos para icono de instagram */
+  .social-icons a {
+    font-size: 24px;
+    margin-right: 10px;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  /* Estilos para la imagen de certificación */
+  .footer-column img {
+    max-width: 100px;
+    height: auto;
+  }
+  
+  /* Footer responsive */
+  @media screen and (max-width: 768px) {
+    .footer-container {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .footer-column {
+      margin: 10px 0;
+    }
+  
+    .footer-column h2 {
+      font-size: 16px;
+    }
+  }
