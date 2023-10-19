@@ -3,13 +3,17 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const methodOverride =  require('method-override');
 
 //Archivos de ruta
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const productsRouter = require('./routes/products');
 const adminRouter = require('./routes/adminRouter');
+
 const inicioRouter = require('./routes/inicioRouter');
+
+//const productsRouter = require('./routes/productsRouter');
+//>>>>>>> cbf9f84dac736de0d01118ca64f8e4312b0141a1
 
 const app = express();
 
@@ -22,13 +26,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '..', 'public')));
+app.use(methodOverride('_method'));
 
-// Rutas
+//rutas
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/admin', adminRouter);
 app.use('/products', productsRouter);
 app.use('/inicio', inicioRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -45,5 +51,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+
 
 module.exports = app;
