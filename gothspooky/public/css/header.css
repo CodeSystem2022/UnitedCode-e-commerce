@@ -3,89 +3,78 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #fff;
-    color: #000;
+    background-color: #fff; 
+    color: #000; 
 }
-
 /* Encabezado */
 .header {
-    background-color: #000;
-    border-bottom: 1px solid #fff;
+    background-color: #000; 
+    border-bottom: 1px solid #fff; 
     padding: 10px 20px;
 }
-
 .top-section {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
     padding: 10px 0;
 }
-
-
-
+/* Logo */
 .logo-container {
     max-width: 60px;
 }
-
 .logo-container img {
     max-width: 100%;
     height: auto;
 }
-
-/* Barra de búsqueda centrada en el medio */
-.search-container {
-    background-color: #fff;
-    border-radius: 25px;
-    padding: 10px;
+.search-bar {
     display: flex;
     align-items: center;
-    flex-grow: 1;
-    margin: 0 auto;
-    max-width: 600px;
+    background-color: #fff;
+    border-radius: 25px;
+    padding: 5px;
+    width: 40%; 
 }
-
 .search-input {
     border: none;
     background: transparent;
     color: #000;
     padding: 5px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
     flex-grow: 1;
     outline: none;
-    width: 100%;
 }
-
 .search-input::placeholder {
     color: #ccc;
 }
-
 .search-button {
     background-color: transparent;
     border: none;
     cursor: pointer;
     outline: none;
-    color: grey;
-    font-size: 24px;
-    margin-left: 10px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    margin-left: -40px;
+    color: #000;
 }
-
-/* Iconos de usuario y carrito */
 .icons {
     display: flex;
     align-items: center;
 }
-
 .user-button,
 .cart-button {
     background: none;
     border: none;
     padding: 0;
     cursor: pointer;
-    font-size: 24px;
+    font-size: 24px; /* Aumenta el tamaño de los iconos */
     color: grey;
-    margin-left: 10px;
+    margin-right: 10px; /* Separa los iconos */
 }
 
-/* Menú con las opciones debajo de todo */
+
+
 .bottom-section {
     background-color: #000;
 }
@@ -95,76 +84,7 @@ body {
     justify-content: space-around;
     padding: 10px;
 }
-
 .nav-menu a {
     text-decoration: none;
     color: #fff;
-}
-
-/* Oculto el botón hamburguesa en computadoras */
-.menu-toggle {
-    display: none;
-    position: relative;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 1;
-}
-
-.menu-button {
-    background-color: #000;
-    color: grey;
-}
-.bar {
-    width: 25px;
-    height: 3px;
-    background-color: #333;
-    margin: 3px 0;
-}
-
-/* Pantallas pequeñas */
-@media screen and (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-        order: -1; 
-        margin-right: 10px; /* Añade espacio entre el botón y el logo */
-    }
-
-    .menu-container {
-        display: none;
-        background-color: #fff;
-        position: absolute;
-        top: 110px;
-        right: 0;
-        z-index: 1;
-        width: 100%;
-    }
-
-    .menu-container.active {
-        display: block;
-    }
-
-    .nav-menu {
-        display: none;
-    }
-
-    .nav-menu.active {
-        display: flex;
-        flex-direction: column;
-    }
-
-    /* Reducir el tamaño de la barra de búsqueda */
-    .search-input {
-        width: 50px !important;
-        padding: 5px !important;
-        font-size: 14px !important;
-    }
-
-    .logo-container {
-        flex-grow: 1; 
-    }
-
-    .top-section {
-        display: flex; 
-        align-items: center; 
-    }
 }

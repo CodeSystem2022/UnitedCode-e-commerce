@@ -2,11 +2,24 @@
 <html>
     <head>
         <%- include('./partials/head')  %>
+        <%- include('./partials/header')  %>
         <title>Home</title>
     </head>
   <body>
+    <div class="contenedor-barra">
+      <img class="lineas" src="/images/design/barra.jpeg" alt="">
+      <h2 class="titulo-principal titulo-categoria" id="titulo-principal">Todos los productos</h2>
+      <img class="lineas" src="/images/design/barra.jpeg" alt="">
+    </div>
+    <div id="contenedor-productos" class="contenedor-productos">
+       
+    </div>
+  </main>
+</div> 
     <main class="home">
         <h1 class="title">Home</h1>
-    </main>
+    </main> 
+    <%- include('./partials/footer')  %>
+    <script src="js/categorias.js"></script>
   </body>
 </html>
