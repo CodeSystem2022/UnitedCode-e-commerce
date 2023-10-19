@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('../partials/head')  %>
+        <title>Crear producto</title>
+    </head>
+  <body>
+    <%- include('../partials/header')  %>
+    <main class="crear">
+        <section class="product_container">
+            <h1>Crear Producto  <i class="fas fa-box"></i></h1>
+    
+            <form class="todo_container" action="/admin" method="POST" enctype="multipart/form-data">
+    
+                <section class="visual_container">
+                    <!-- ////Eligir archivo//// -->
+                        <input type="file" accept="image/*" name="imagenes" multiple>
+                    <!-- ////////selector de enviar//////// -->
+                    
+                </section>
+    
+    
+                <section class="info_container">
+                    <!-- /////Nombre de Producto///// -->
+                    <div class= "selec info_titulo_container">
+                        <p>Nombre de Producto</p>
+                        <input type="text" name="nombre" >
+                    </div>
+                    <!-- /////Descripcion de Producto///// -->
+                    <div class= "selec info_des_container">
+                        <p>Ingresá una descripción</p>
+                        <textarea name="descripcion" id="" placeholder="Ingresá una descripción"></textarea>
+                    </div>
+                    <!-- /////Precio de producto///// -->
+                    <div class= "selec info_precio_container">
+                        <p>Precio $</p>
+                        <input type="number" name="precio" required>
+                    </div>
+                    <!-- /////categoria de producto///// -->
+                    <div class= "selec info_categoria_container">
+                        <p>Categoría</p>
+                        
+                        <div class="Categoria1">
+                            <div>
+                            <label for="ofertas">Ofertas</label>
+                            <input class="m" name="categoria" id="ofertas" type="checkbox" value="Ofertas">
+                            </div>
+    
+                            <div>
+                            <label for="nuevos">Nuevos Ingresos</label>
+                            <input class="m" name="categoria" id="nuevos" type="checkbox" value="Nuevos">
+                            </div>
+    
+                            <div>
+                            <label for="Accesorios">Accesorios</label>
+                            <input class="m" name="categoria" id="Accesorios" type="checkbox" value="Accesorios">
+                            </div>
+    
+                        </div>
+    
+                        <div class="Categoria2">
+                            <div>
+                            <label for="Arriba">Parte de arriba</label>
+                            <input class="m" name="categoria" id="Arriba" type="checkbox" value="Arriba">
+                            </div>
+    
+                            <div>
+                            <label for="Abajo">Parte de abajo</label>
+                            <input class="m"  name="categoria" id="Abajo" type="checkbox" value="Abajo">
+                            </div>
+    
+                        </div>
+    
+                    </div>
+                    
+                </section>
+                <section class="button_container">
+                    <button class="boton" type="submit">Crear</button>
+                    <button class="boton" type="reset">Borrar</button>
+                </section>
+    
+            </form>
+        </section>
+    </main>
+    <%- include('../partials/footer')  %>
+  </body>
+</html>
