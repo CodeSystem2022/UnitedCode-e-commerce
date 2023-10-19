@@ -1,0 +1,182 @@
+
+img {
+    max-width: 100%;
+    margin: 4px 10px 4px 4px;
+    padding: 0px 4px 4px 4px;
+}
+.banner {
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000000;
+    margin-top: 0.5px;
+}
+.slider {
+    overflow: hidden;
+    background-color: #000000;
+}
+
+.slider--inner {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 400px;
+    transition: all 0.1s ease-in;
+    align-items: center;
+    margin-left: 30px;
+    margin-left: 30px;
+}
+.slider--inner img{
+    aspect-ratio: 16 / 9;
+    object-fit:cover;
+}
+
+.contenedor {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    margin: 20px 20px 10px 20px;
+     
+    max-width: 15000px;
+}
+.contenedorbarra {
+    display: flex;
+    justify-content: space-around;    
+}
+
+.columna {
+    padding: 10px;
+    border: 1px solid #ccc;
+    max-width: 250px;
+}
+
+.linea {
+    flex: 1;
+    padding: 10px;
+}
+
+.text {
+    font-size: 40px;
+    font-weight: 400;
+}
+
+.oferta  {
+    font-size:40px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    padding-top: 30px;
+    text-align: center;
+    justify-content: center;
+}
+
+.tarjeta {
+    width: 100%; /* Cambia el ancho a 100% para que sea responsivo */
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.tarjeta img {
+    max-width: 100%;
+    height: auto;
+}
+
+.informacion {
+    padding: 10px;
+}
+
+h3 {
+    margin: 0;
+}
+
+
+/* Media Query para ajustar el diseño en pantallas más pequeñas */
+@media (min-width:200px) and (max-width: 737px) {
+    .slider {
+        display: none; /* Oculta el carrusel cambiando su propiedad "display" a "none" */
+    }
+    .contenedor {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 50px;
+        justify-items: center;
+        margin: 0 auto;
+        max-width: 200%;
+    }
+    .tarjeta {
+        width: 100%;
+        margin-left: 6.8rem;
+    }
+    .linea {
+        flex: 1;
+        height: 100%;
+        width: 500px;
+    }
+    .oferta {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 30px;
+
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+/* Media Query para ajustar el diseño en pantallas más pequeñas */
+@media (min-width: 738px) and (max-width: 767px) {
+    .slider {
+        display: none; /* Oculta el carrusel cambiando su propiedad "display" a "none" */
+    }
+    .contenedor {
+        grid-template-columns: repeat(auto-fit, minmax(4, 1fr));
+        align-items: center;
+    }
+    .tarjeta {
+        width: 90%;
+        margin-left: 3rem;
+        margin-right: 6.8rem;
+    }
+    .linea {
+        flex: 1;
+        height: 60%;
+        width: 300px;
+        padding-top: 50px;
+    }   
+    .oferta p {
+       
+        font-weight: bold;
+        margin-bottom: 15px;
+        text-align: center;
+        justify-content: center;
+        margin: 5px 0;
+        font-size: 30px;
+    }
+}
+
+/* Media Query para ajustar el diseño en pantallas medianas */
+@media (min-width: 768px) and (max-width: 1200px) {
+    .contenedor {
+        grid-template-columns: repeat(auto-fit, minmax(4, 1fr));
+        
+    }
+    .tarjeta {
+        width: 90%;
+        margin-left: 3rem;
+        margin-right: 6.8rem;
+    }
+    .linea {
+        flex: 1;
+        height: 100%;
+        width: 100%;
+    }
+    .oferta {
+        font-size: 40px;
+        font-weight: bold;
+        margin-bottom: 30px;
+        text-align: center;
+        justify-content: center;
+        margin: 5px 0;
+    }
+
+}
