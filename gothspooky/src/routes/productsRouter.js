@@ -10,7 +10,7 @@ module.exports = router;
 
 //Ruta del formulario de carrito
 const express = require('express');
-const mysql = require('mysql'); // Asegúrate de instalar el paquete 'mysql' usando npm.
+const mysql = require('mysql');
 
 const app = express();
 const port = 3000;
@@ -50,7 +50,7 @@ app.post('/procesar', (req, res) => {
     } else {
       console.log('Datos insertados correctamente');
     }
-    res.redirect('/'); // Puedes redirigir al usuario a otra página.
+  
   });
 });
 
