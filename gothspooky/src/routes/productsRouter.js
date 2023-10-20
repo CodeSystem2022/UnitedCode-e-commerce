@@ -8,7 +8,6 @@ router.get('/', function(req, res, next) {
 
 module.exports = router;
 
-
 //Ruta del formulario de carrito
 const express = require('express');
 const mysql = require('mysql'); 
