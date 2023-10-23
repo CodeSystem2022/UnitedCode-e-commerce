@@ -23,13 +23,13 @@
 
                         <!-- /////titulo de producto//// -->
                         <h2>
-                            Editando <%= producto.nombre  %> <i class="fas fa-box"></i>
+                            <%= producto.nombre  %> <i class="fas fa-box"></i>
                         </h2>
 
                         <!-- /////Descripcion de Producto///// -->
                         <div class="selec info_des_container">
                             <p>Ingresá una descripción</p>
-                            <textarea name="descripcion" id=""><!-- Acá va la descripcion del producto que queremos editar --></textarea>
+                            <textarea name="descripcion" id=""><%= producto.descripcion %></textarea><!-- Acá va la descripcion del producto que queremos editar -->
                         </div>
                     </section>
 
@@ -38,13 +38,13 @@
                         <!-- /////Nombre de Producto///// -->
                         <div class="selec info_titulo_container">
                             <p>Nombre de Producto</p>
-                            <input type="text" name="nombre" value=""> <!-- value= debe traer el nombre del producto -->
+                            <input type="text" name="nombre" value="<%= producto.nombre %>"> <!-- value= debe traer el nombre del producto -->
                         </div>
                         
                         <!-- /////Precio de producto///// -->
                         <div class="selec info_precio_container">
                             <p>Precio $</p>
-                            <input type="number" name="precio" value=""> <!-- value= debe traer el precio del producto -->
+                            <input type="number" name="precio" value="<%= producto.precio %>"> <!-- value= debe traer el precio del producto -->
                         </div>
 
                         <!-- /////categoria de producto///// -->
@@ -60,24 +60,28 @@
                                     <!-- Si el producto en algunas de las categorías tiene "Ofertas" el checkbox pasa a estar en su estado checked, sino no hace nada -->
                                 <div>
                                     <label for="Nuevos">Nuevos</label>
-                                    <input class="m" name="categoria" id="Nuevos" type="checkbox" value="Nuevos">
+                                    <input class="m" name="categoria" id="Nuevos" type="checkbox" value="Nuevos" <%
+                                        if(producto.categoria.includes("Nuevos")===true ){%>checked<%}%>>
                                 </div>
 
                                 <div>
                                     <label for="Accesorios">Accesorios</label>
-                                    <input class="m" name="categoria" id="Accesorios" type="checkbox" value="Accesorios">
+                                    <input class="m" name="categoria" id="Accesorios" type="checkbox" value="Accesorios" <%
+                                    if(producto.categoria.includes("Accesorios")===true ){%>checked<%}%>>
                                 </div>
                             </div>
 
                             <div class="Categoria2">
                                 <div>
                                     <label for="Arriba">Arriba</label>
-                                    <input class="m" name="categoria" id="Arriba" type="checkbox" value="Arriba">
+                                    <input class="m" name="categoria" id="Arriba" type="checkbox" value="Arriba" <%
+                                    if(producto.categoria.includes("Arriba")===true ){%>checked<%}%>>
                                 </div>
 
                                 <div>
                                     <label for="Abajo">Abajo</label>
-                                    <input class="m" name="categoria" id="Abajo" type="checkbox" value="Abajo">
+                                    <input class="m" name="categoria" id="Abajo" type="checkbox" value="Abajo" <%
+                                    if(producto.categoria.includes("Abajo")===true ){%>checked<%}%>>
                                 </div>
 
                             </div>

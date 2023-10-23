@@ -58,6 +58,18 @@ module.exports = {
         2_ del req.body obtener los values de los inputs y reemplazarlos por los valores que tiene el producto en el JSON  
         3_ hacer lo mismo que en crear y redireccionar
         */
+        let productoEditado = productos.find(producto => producto.id === parseInt(req.params.id));// Buscamos dentro del arreglo producto, aquel cuyo id coincida con el especificado
+        let {nombre, descripcion, precio, descuento, categoria} = req.body;
+        
+        //Editamos los productos
+        productoEditado.nombre = nombre;
+        productoEditado.descripcion = descripcion;
+        productoEditado.precio = precio;
+        productoEditado.categoria = typeof(categoria) === 'string' ? [categoria] : categoria;
+
+        fs.writeFileSync(productosRuta, JSON.stringify(productos, null ,2));//Reescribimos los datos del arreglo "productos" en el archivo JSON
+
+        res.redirect(`/product/${+req.params.id}`);//Redirije al usuario al nuevo producto
     },
     //Eliminar producto
     eliminar: (req, res) => {
