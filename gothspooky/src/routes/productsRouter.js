@@ -9,8 +9,7 @@ router.get('/', function(req, res, next) {
 module.exports = router;
 
 //Ruta del formulario de carrito
-const express = require('express');
-const mysql = require('mysql'); 
+/* const mysql = require('mysql'); 
 
 const app = express();
 const port = 3000;
@@ -57,3 +56,4 @@ app.post('/procesar', (req, res) => {
 app.listen(3000, () => {
   console.log(`Servidor en ejecución en http://localhost:${port}`);
 });
+ */
