@@ -15,7 +15,7 @@
             <section class="product_container">
                 <h1>Editar Producto</h1>
 
-                <form class="todo_container" action="/admin/edit/" method="POST"><!-- proporcionar el id del producto que se quiere editar -->
+                <form class="todo_container" action="/admin/edit/<%= producto.id  %>?_method=PUT" method="POST"><!-- proporcionar el id del producto que se quiere editar -->
 
                     <section class="visual_container">
                         <!-- ////imagen de archivo//// -->

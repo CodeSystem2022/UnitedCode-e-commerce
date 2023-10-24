@@ -4,20 +4,17 @@ const router = express.Router();
 /* GET users listing. */
 router.get('/', function(req, res, next) {
     res.render('products/products');
-  });
+});
 
-module.exports = router;
-
-//Ruta del formulario de carrito
-const express = require('express');
-const mysql = require('mysql'); 
+// Ruta del formulario de carrito
+/* const mysql = require('mysql'); 
 
 const app = express();
 const port = 3000;
 
 app.use(express.urlencoded({ extended: false }));
 
-// Configuracion a la base de datos
+// Configuración de la base de datos
 const connection = mysql.createConnection({
   host: 'nombre_del_servidor',
   user: 'nombre_de_usuario',
@@ -25,13 +22,13 @@ const connection = mysql.createConnection({
   database: 'nombre_de_la_base_de_datos',
 });
 
-connection.connect((err) => {
+ connection.connect((err) => {
   if (err) {
     console.error('Error de conexión a la base de datos: ' + err.stack);
     return;
   }
   console.log('Conexión a la base de datos exitosa');
-});
+}); 
 
 // Manejo del envío del formulario
 app.post('/procesar', (req, res) => {
@@ -53,7 +50,5 @@ app.post('/procesar', (req, res) => {
     
   });
 });
-
-app.listen(3000, () => {
-  console.log(`Servidor en ejecución en http://localhost:${port}`);
-});
+ */
+module.exports = router;
