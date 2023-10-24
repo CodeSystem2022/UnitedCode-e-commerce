@@ -50,5 +50,13 @@ app.post('/procesar', (req, res) => {
     
   });
 });
+<<<<<<< HEAD
  */
 module.exports = router;
+=======
+
+app.listen(3000, () => {
+  console.log(`Servidor en ejecución en http://localhost:${port}`);
+});
+ */
+>>>>>>> 0d69ff9c379e81287c03ad3a93001cd58d5ef33b

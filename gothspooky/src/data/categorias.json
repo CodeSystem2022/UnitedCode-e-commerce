@@ -1,0 +1,34 @@
+[
+    {
+        "productoId": 1,
+        "nombre": "Ofertas"
+    },
+    {
+        "productoId": 2,
+        "nombre": "Ingresantes"
+    },
+    {
+        "productoId": 3,
+        "nombre": "Accesorios"
+    },
+    {
+        "productoId": 4,
+        "nombre": "Arriba"
+    },
+    {
+        "productoId": 5,
+        "nombre": "Abajo"
+    },
+    {
+        "productoId": 6,
+        "nombre": "Ofertas"
+    },
+    {
+        "productoId": 7,
+        "nombre": "Ingresantes"
+    },
+    {
+        "productoId": 8,
+        "nombre": "Accesorios"
+    }
+]

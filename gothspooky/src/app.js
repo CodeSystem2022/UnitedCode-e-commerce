@@ -10,7 +10,6 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const adminRouter = require('./routes/adminRouter');
 const productsRouter = require('./routes/productsRouter');
-
 const cartRouter = require('./routes/cart');
 
 const app = express();
