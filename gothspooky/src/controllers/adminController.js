@@ -21,7 +21,7 @@ module.exports = {
     },
     //Función de crear producto
     crear: (req, res) => {
-        const {nombre, descripcion, precio, categoria } = req.body
+        const { precio, categoria } = req.body
         let nuevoProducto = req.body;
 
         let imagenes = []
@@ -31,8 +31,6 @@ module.exports = {
 
         nuevoProducto.id = productos.length + 1;
 
-            nuevoProducto.nombre = nombre;
-            nuevoProducto.descripcion = descripcion;
             nuevoProducto.precio = parseInt(precio);
             nuevoProducto.categoria = typeof(categoria) === 'string' ? [categoria] : categoria;
             nuevoProducto.imagen = imagenes;
@@ -40,7 +38,7 @@ module.exports = {
             productos.push(nuevoProducto);
 
         fs.writeFileSync(productosRuta, JSON.stringify(productos, null ,2))
-		res.redirect(`/product/${nuevoProducto.id}`)
+		res.send(req.body)
     },
     //Formulario editar producto
     vistaEditar: (req, res) => {
