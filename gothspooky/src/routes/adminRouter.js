@@ -19,5 +19,5 @@ router.put('/edit/:id', editar );
 //fer
 
 ///////// Eliminar producto //////////
-//Nico
+router.post('/eliminar/:id', eliminar); // Agrega la ruta para eliminar un producto
 module.exports = router;

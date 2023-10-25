@@ -71,11 +71,13 @@ module.exports = {
     },
     //Eliminar producto
     eliminar: (req, res) => {
-        //Nico
-        /* para eliminar el producto utilizar un método de array de js, en este caso filter 
-        https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
-
-        */
-
+            //Obtener el ID del producto a eliminar
+            const { id } = req.params;
+            //método filter para eliminar
+            productos = productos.filter(producto => producto.id !== parseInt(id));
+            //Guarda el nuevo array de productos en el archivo JSON
+            fs.writeFileSync(productosRuta, JSON.stringify(productos, null, 2));
+            // Redirige al usuario a la página de administrador después de eliminar el producto
+            res.redirect('/admin');
     }
 }
