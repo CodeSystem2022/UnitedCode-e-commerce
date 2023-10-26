@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { admin, vistaCrear, crear, vistaEditar, editar } = require('../controllers/adminController');
+const { admin, vistaCrear, crear, vistaEditar, editar, eliminar } = require('../controllers/adminController');
 const multerProduct = require('../middlewares/multerProduct');
 
 
