@@ -28,7 +28,7 @@ productos.forEach((product) => {
     totalElementos.innerHTML = `<h2>Total: $ ${total}</h2>`;
 
     if (total === 0) {
-      vistaProductos.innerHTML = "<h2>Carrito Vacío</h2>";
+      vistaProductos.innerHTML = "<h2>Tu carrito se encuentra vacío</h2>";
     }
   });
 
@@ -40,5 +40,5 @@ totalElementos.innerHTML = `<h2>Total: $ ${total}</h2>`;
 preciototal.append(totalElementos);
 
 if (total === 0) {
-  vistaProductos.innerHTML = "<h2>Carrito Vacío</h2>";
+  vistaProductos.innerHTML = `<h2>Tu carrito se encuentra vacío</h2>`;
 }
