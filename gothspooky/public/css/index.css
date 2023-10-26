@@ -1,10 +1,10 @@
 
-img {
+.home img {
     max-width: 100%;
     margin: 4px 10px 4px 4px;
     padding: 0px 4px 4px 4px;
 }
-.banner {
+.home .banner {
     
     display: flex;
     align-items: center;
@@ -12,12 +12,12 @@ img {
     background-color: #000000;
     margin-top: 0.5px;
 }
-.slider {
+.home .slider {
     overflow: hidden;
     background-color: #000000;
 }
 
-.slider--inner {
+.home .slider--inner {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -27,42 +27,47 @@ img {
     margin-left: 30px;
     margin-left: 30px;
 }
-.slider--inner img{
+.home .slider--inner img{
     aspect-ratio: 16 / 9;
     object-fit:cover;
 }
 
-.contenedor {
+.home .contenedorgeneral{
+    margin: 0px 100px ;
+}
+.home .contenedor {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
     justify-content: center;
-    margin: 20px 20px 10px 20px;
-     
-    max-width: 15000px;
+    /*margin: 20px 20px 10px 20px;*/     
+    /*max-width: 15000px;*/
 }
-.contenedorbarra {
-    display: flex;
-    justify-content: space-around;    
+.home .contenedorbarra {
+    display: flex; /* Para alinear elementos horizontalmente */
+    align-items: center; /* Para centrar verticalmente los elementos dentro del contenedor */
+    justify-content: center; /* Para centrar horizontalmente los elementos dentro del contenedor */
 }
+.home .linea {
+    border-top: 3px solid #000; /* Ancho y color de la línea */
+    width: 100%; /* Ancho total de la línea (100% del contenedor) */
+    margin: 10px 10px; /* Espaciado superior e inferior opcional */
+   
+  }
 
-.columna {
+  .home .columna {
     padding: 10px;
     border: 1px solid #ccc;
-    max-width: 250px;
+    /*max-width: 250px;*/
 }
 
-.linea {
-    flex: 1;
-    padding: 10px;
-}
 
-.text {
+.home .text {
     font-size: 40px;
     font-weight: 400;
 }
 
-.oferta  {
+.home .oferta  {
     font-size:40px;
     font-weight: bold;
     margin-bottom: 30px;
@@ -71,25 +76,32 @@ img {
     justify-content: center;
 }
 
-.tarjeta {
+.home .tarjeta {
     width: 100%; /* Cambia el ancho a 100% para que sea responsivo */
     border: 1px solid #ccc;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     text-align: center;
+    transition: transform 0.5s, box-shadow 0.5s;
+}
+.home .tarjeta:hover {
+    transform: scale(1.05); /* Escala la tarjeta al 105% de su tamaño original */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); /* Agrega una sombra */
 }
 
-.tarjeta img {
+  .home .tarjeta img {
     max-width: 100%;
     height: auto;
 }
 
-.informacion {
+.home .informacion {
     padding: 10px;
 }
 
-h3 {
+.home h3 {
     margin: 0;
 }
+
+
 
 
 /* Media Query para ajustar el diseño en pantallas más pequeñas */
@@ -106,7 +118,7 @@ h3 {
     }
     .tarjeta {
         width: 100%;
-        margin-left: 6.8rem;
+       
     }
     .linea {
         flex: 1;
@@ -152,8 +164,16 @@ h3 {
         margin: 5px 0;
         font-size: 30px;
     }
+    .columna {
+        max-width: 250px;
+    }
+    
 }
-
+@media (max-width: 768px) {
+    .slider {
+        display: none; /* Oculta el carrusel cambiando su propiedad "display" a "none" */
+    }
+}
 /* Media Query para ajustar el diseño en pantallas medianas */
 @media (min-width: 768px) and (max-width: 1200px) {
     .contenedor {
