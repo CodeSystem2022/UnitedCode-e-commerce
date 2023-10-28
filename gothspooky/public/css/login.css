@@ -1,20 +1,25 @@
 @import url('https://rsms.me/inter/inter-ui.css');
-::selection {
+
+.logingeneral ::selection {
   background: #2D2F36;
 }
-::-webkit-selection {
+
+.logingeneral ::-webkit-selection {
   background: #2D2F36;
 }
-::-moz-selection {
+
+.logingeneral ::-moz-selection {
   background: #2D2F36;
 }
-body {
+
+.logingeneral body {
   background: white;
   font-family: 'Inter UI', sans-serif;
   margin: 0;
   padding: 20px;
 }
-.page {
+
+.logingeneral .page {
   background: #e2e2e5;
   display: flex;
   flex-direction: column;
@@ -23,90 +28,104 @@ body {
   place-content: center;
   width: calc(100% - 40px);
 }
+
 @media (max-width: 767px) {
-  .page {
+  .logingeneral .page {
     height: auto;
     margin-bottom: 20px;
     padding-bottom: 20px;
   }
 }
-.container {
+
+.logingeneral .container {
   display: flex;
   height: 320px;
   margin: 0 auto;
   width: 640px;
 }
+
 @media (max-width: 767px) {
-  .container {
+  .logingeneral .container {
     flex-direction: column;
     height: 630px;
     width: 320px;
   }
 }
-.left {
+
+.logingeneral .left {
   background: white;
   height: calc(100% - 40px);
   top: 20px;
   position: relative;
   width: 50%;
 }
+
 @media (max-width: 767px) {
-  .left {
+  .logingeneral .left {
     height: 100%;
     left: 20px;
     width: calc(100% - 40px);
     max-height: 270px;
   }
 }
-.login {
+
+.logingeneral .login {
   font-size: 50px;
   font-weight: 900;
   margin: 50px 40px 40px;
 }
-.eula {
+
+.logingeneral .eula {
   color: #999;
   font-size: 14px;
   line-height: 1.5;
   margin: 40px;
 }
-.right {
+
+.logingeneral .right {
   background: #000000;
-  box-shadow: 0px 0px 40px 16px rgba(0,0,0,0.22);
+  box-shadow: 0px 0px 40px 16px rgba(0, 0, 0, 0.22);
   color: #F1F1F2;
   position: relative;
   width: 50%;
 }
+
 @media (max-width: 767px) {
-  .right {
+  .logingeneral .right {
     flex-shrink: 0;
     height: 100%;
     width: 100%;
     max-height: 350px;
   }
 }
-svg {
+
+.logingeneral svg {
   position: absolute;
   width: 320px;
 }
-path {
+
+.logingeneral path {
   fill: none;
-  stroke: url(#linearGradient);;
+  stroke: url(#linearGradient);
   stroke-width: 4;
   stroke-dasharray: 240 1386;
 }
-.form {
+
+.logingeneral .form {
   margin: 40px;
   position: absolute;
 }
-label {
-  color:  #c2c2c5;
+
+.logingeneral label {
+  color: #c2c2c5;
   display: block;
   font-size: 14px;
   height: 16px;
   margin-top: 20px;
   margin-bottom: 5px;
 }
-input {
+
+.logingeneral input {
   background: transparent;
   border: 0;
   color: #f2f2f2;
@@ -116,26 +135,29 @@ input {
   outline: none !important;
   width: 100%;
 }
-input::-moz-focus-inner { 
-  border: 0; 
+
+.logingeneral input::-moz-focus-inner {
+  border: 0;
 }
-#submit {
+
+.logingeneral #submit {
   color: #707075;
   margin-top: 40px;
   transition: color 300ms;
 }
-#submit:focus {
+
+.logingeneral #submit:focus {
   color: #f2f2f2;
 }
-#submit:active {
+
+.logingeneral #submit:active {
   color: #d0d0d2;
 }
 
-
-:root{
-    --black: #000;
-    --white: #fff;
-    --color1: #A30D57;
-    --color2: #C23348;
-    --color3: #EFB5B5;
+:root {
+  --black: #000;
+  --white: #fff;
+  --color1: #A30D57;
+  --color2: #C23348;
+  --color3: #EFB5B5;
 }
