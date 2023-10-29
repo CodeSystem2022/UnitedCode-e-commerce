@@ -11,6 +11,7 @@ const usersRouter = require('./routes/users');
 const adminRouter = require('./routes/adminRouter');
 const productsRouter = require('./routes/productsRouter');
 const cartRouter = require('./routes/cart');
+const detailRouter = require('./routes/ detailRouter');
 
 const app = express();
 
@@ -28,9 +29,9 @@ app.use(methodOverride('_method'));
 //rutas
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/detail', detailRouter);
 app.use('/admin', adminRouter);
 app.use('/products', productsRouter);
-
 app.use('/cart', cartRouter);
 
 // catch 404 and forward to error handler
