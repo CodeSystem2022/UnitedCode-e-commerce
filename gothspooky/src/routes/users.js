@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const { vistaRegistro, registro } = require('../controllers/usersController');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+router.get('/register', vistaRegistro);
+router.post('/register', registro);
 
 module.exports = router;
