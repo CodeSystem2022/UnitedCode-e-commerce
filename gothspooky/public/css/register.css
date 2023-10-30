@@ -1,0 +1,103 @@
+/* Estilos para el formulario de registro */
+.main.register {
+  background: transparent; /* Fondo transparente o blanco */
+  text-align: center;
+  padding: 20px;
+  color: var(--white); /* Texto en color blanco */
+}
+
+/* Estilos para el encabezado h2 en el formulario de registro */
+.main.register h2 {
+  font-size: 30px;
+  color: var(--white);
+  margin: 0 auto;
+  border: 2px solid var(--black);
+  padding: 20px;
+  background-color: var(--color1);
+  max-width: 400px;
+  border-top-left-radius: 20px; /* Borde superior izquierdo redondeado */
+  border-top-right-radius: 20px; /* Borde superior derecho redondeado */ 
+}
+
+/* Estilos para ocultar elementos con la clase "hidden" dentro del formulario de registro */
+.main.register .hidden {
+  display: none;
+}
+
+/* Estilos para el formulario y sus elementos en el formulario de registro */
+.main.register form {
+  text-align: left;
+  margin: 0 auto;
+  max-width: 400px;
+  border: 2px solid  var(--black); /* Agrega un borde negro alrededor del formulario */
+  padding: 40px; /* Agrega un espacio interno de 20px alrededor del contenido del formulario */
+  background-color: var(--black); /* Fondo negro para el formulario */
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px; 
+}
+
+/* Estilos para los campos de entrada y etiquetas en el formulario de registro */
+.main.register label {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--white);
+}
+
+/* Agrega margen superior al label de "Nombre" */
+.main.register label[for="nombre"] {
+  margin-top: 20px; 
+}
+
+.main.register input {
+  border-radius: 10px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  background: var(--white);
+  border: 3px solid var(--color1); /* Borde con el color1 */
+  color: var(--black);
+}
+
+/* Estilos para los botones en el formulario de registro */
+.main.register button {
+  border-radius: 10px;
+  background-color: var(--color1);
+  color: var(--white); 
+  padding: 20px 60px;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Agrega margen superior al botón "Crear cuenta" */
+.main.register button#send {
+  margin-top: 20px; 
+}
+
+/* Estilos para el botón al pasar el cursor en el formulario de registro */
+.main.register button:hover {
+  background-color: var(--color2); 
+}
+
+/* Estilos responsivos para pantallas pequeñas */
+@media (max-width: 640px) {
+  .main.register {
+    max-width: 100%;
+  }
+
+  .main.register form .main-box .input-box {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .main.register form .container .category {
+    width: 100%;
+  }
+
+  .main.register form .main-box {
+    max-height: 430px;
+    overflow-y: scroll;
+  }
+}
