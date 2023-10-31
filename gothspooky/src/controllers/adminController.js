@@ -58,12 +58,19 @@ module.exports = {
         */
         let productoEditado = productos.find(producto => producto.id === parseInt(req.params.id));// Buscamos dentro del arreglo producto, aquel cuyo id coincida con el especificado
         let {nombre, descripcion, precio, descuento, categoria} = req.body;
-        
+
+        let imagenes = []
+        req.files.forEach(image => {
+            imagenes.push(image.filename)
+        });
         //Editamos los productos
         productoEditado.nombre = nombre;
         productoEditado.descripcion = descripcion;
         productoEditado.precio = precio;
         productoEditado.categoria = typeof(categoria) === 'string' ? [categoria] : categoria;
+        if(imagenes.length !== 0) {
+            productoEditado.imagen = imagenes
+        }
 
         fs.writeFileSync(productosRuta, JSON.stringify(productos, null ,2));//Reescribimos los datos del arreglo "productos" en el archivo JSON
 

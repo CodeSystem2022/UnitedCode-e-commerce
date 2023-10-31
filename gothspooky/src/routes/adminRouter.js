@@ -15,9 +15,9 @@ router.post('/', multerProduct.array('imagenes'), crear);
 ///////// Edición de producto //////////
 //:id hace referencia a una ruta dinámica, puede tomar un valor variable, es decir: /edit/1, /edit/2, etc. Este id se lo proporciona el cliente
 router.get('/edit/:id', vistaEditar);
-router.put('/edit/:id', editar );
+router.put('/edit/:id', multerProduct.array('imagenes'), editar );
 //fer
 
 ///////// Eliminar producto //////////
-router.post('/eliminar/:id', eliminar); // Agrega la ruta para eliminar un producto
+router.delete('/eliminar/:id', eliminar); // Agrega la ruta para eliminar un producto
 module.exports = router;
