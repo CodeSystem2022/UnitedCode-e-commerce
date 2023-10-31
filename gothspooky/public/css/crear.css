@@ -13,8 +13,8 @@ main.crear section.product_container h1{
 main.crear section.product_container form.todo_container {
     background-color: var(--black);
     max-width: 400px;
-    margin: 30px auto;
-    border-radius: 5px;
+    margin: 30px auto 0px auto;
+    border-radius: 5px 5px 0px 0px;
 }
 
 /* //////////////estilo a todas las "P" ///////////// */
@@ -114,8 +114,65 @@ main.crear section.product_container form.todo_container section.button_containe
     background-color: crimson;
 }
 
-/*////////////////////////////// Tablet///////////////////////////// */
+/* Retoques vista editar */
 
-@media (width >= 768px) {
+main.crear form.todo_container section.visual_container img {
+    width: 40%;
+    border-radius: 50%;
+    margin-top: 20px;
+}
 
+main.crear form.todo_container section.visual_container input.editInput {
+    width: 250px;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    color: var(--black);
+}
+
+main.crear form.todo_container section.visual_container textarea.editDescrip {
+    resize: vertical;
+    min-width: 250px;
+    min-height: 120px;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+main.crear form.todo_container div.editCategorias {
+    display: flex;
+    flex-flow: nowrap row;
+    height: 20px;
+    justify-content: space-around;
+    margin-bottom: 5px;
+}
+
+main.crear form.todo_container div.editCategorias label {
+    color: var(--white);
+    width: 150px;
+}
+
+main.crear form.todo_container div.editCategorias input {
+    height: 18px;
+    width: 18px;
+}
+
+main.crear div.delete_container {
+    margin: 0px auto 20px auto;
+    width: 400px;
+    height: 50px;
+    background-color: var(--black);
+    display: flex;
+    justify-content: space-around;
+    border-radius: 0px 0px 5px 5px;
+}
+
+main.crear div.delete_container form button {
+    background-color: crimson;
+    border: none;
+    padding: 10px;
+    color: var(--white);
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
 }

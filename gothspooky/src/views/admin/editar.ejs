@@ -13,98 +13,87 @@
 
         <main class="crear">
             <section class="product_container">
-                <h1>Editar Producto</h1>
+                <h1>Editando: <%= producto.nombre  %></h1>
 
-                <form class="todo_container" action="/admin/edit/<%= producto.id  %>?_method=PUT" method="POST"><!-- proporcionar el id del producto que se quiere editar -->
+                <form class="todo_container" action="/admin/edit/<%= producto.id  %>?_method=PUT" method="POST" enctype="multipart/form-data">
 
                     <section class="visual_container">
                         <!-- ////imagen de archivo//// -->
-                        <img src="/img/productos/" alt=""><!-- imagen del producto -->
+                        <img src="/images/products/<%= producto.imagen %>" alt="">
 
-                        <!-- /////titulo de producto//// -->
-                        <h2>
-                            <%= producto.nombre  %> <i class="fas fa-box"></i>
-                        </h2>
-
-                        <!-- /////Descripcion de Producto///// -->
-                        <div class="selec info_des_container">
-                            <p>Ingresá una descripción</p>
-                            <textarea name="descripcion" id=""><%= producto.descripcion %></textarea><!-- Acá va la descripcion del producto que queremos editar -->
-                        </div>
-                    </section>
-
-
-                    
                         <!-- /////Nombre de Producto///// -->
                         <div class="selec info_titulo_container">
                             <p>Nombre de Producto</p>
-                            <input type="text" name="nombre" value="<%= producto.nombre %>"> <!-- value= debe traer el nombre del producto -->
+                            <input class="editInput" type="text" name="nombre" value="<%= producto.nombre %>"> <!-- value= debe traer el nombre del producto -->
                         </div>
                         
+                        <!-- /////Descripcion de Producto///// -->
+                        <div class="selec info_des_container">
+                            <p>Descripción</p>
+                            <textarea class="editDescrip" name="descripcion" id=""><%= producto.descripcion %></textarea><!-- Acá va la descripcion del producto que queremos editar -->
+                        </div>
+
                         <!-- /////Precio de producto///// -->
                         <div class="selec info_precio_container">
                             <p>Precio $</p>
-                            <input type="number" name="precio" value="<%= producto.precio %>"> <!-- value= debe traer el precio del producto -->
+                            <input class="editInput" type="number" name="precio" value="<%= producto.precio %>"> <!-- value= debe traer el precio del producto -->
                         </div>
-
+                    
                         <!-- /////categoria de producto///// -->
                         <p>Categoría</p>
                         <div class="selec info_categoria_container">
 
-                            <div class="Categoria1">
-                                <div>
+                            <div class="categoria1">
+                                <div class="editCategorias" >
                                     <label for="Ofertas">Ofertas</label>
                                     <input class="m" name="categoria" id="Ofertas" type="checkbox" value="Ofertas"
                                         <% if(producto.categoria.includes("Ofertas") === true ){%>checked<%}%> >
                                 </div>
                                     <!-- Si el producto en algunas de las categorías tiene "Ofertas" el checkbox pasa a estar en su estado checked, sino no hace nada -->
-                                <div>
-                                    <label for="Nuevos">Nuevos</label>
-                                    <input class="m" name="categoria" id="Nuevos" type="checkbox" value="Nuevos" <%
-                                        if(producto.categoria.includes("Nuevos")===true ){%>checked<%}%>>
+                                <div class="editCategorias" >
+                                    <label for="Nuevos">Nuevos Ingresos</label>
+                                    <input class="m" name="categoria" id="Nuevos" type="checkbox" value="Nuevos" 
+                                        <% if(producto.categoria.includes("Nuevos")===true ){%>checked<%}%> >
                                 </div>
 
-                                <div>
+                                <div class="editCategorias" >
                                     <label for="Accesorios">Accesorios</label>
-                                    <input class="m" name="categoria" id="Accesorios" type="checkbox" value="Accesorios" <%
-                                    if(producto.categoria.includes("Accesorios")===true ){%>checked<%}%>>
+                                    <input class="m" name="categoria" id="Accesorios" type="checkbox" value="Accesorios" 
+                                    <% if(producto.categoria.includes("Accesorios")===true ){%>checked<%}%> >
+                                </div>
+
+                                <div class="editCategorias" >
+                                    <label for="Arriba">Parte de arriba</label>
+                                    <input class="m" name="categoria" id="Arriba" type="checkbox" value="Arriba" 
+                                    <% if(producto.categoria.includes("Arriba")===true ){%>checked<%}%> >
+                                </div>
+
+                                <div class="editCategorias" >
+                                    <label for="Abajo">Parte de abajo</label>
+                                    <input class="m" name="categoria" id="Abajo" type="checkbox" value="Abajo" 
+                                    <% if(producto.categoria.includes("Abajo")===true ){%>checked<%}%> >
                                 </div>
                             </div>
-
-                            <div class="Categoria2">
-                                <div>
-                                    <label for="Arriba">Arriba</label>
-                                    <input class="m" name="categoria" id="Arriba" type="checkbox" value="Arriba" <%
-                                    if(producto.categoria.includes("Arriba")===true ){%>checked<%}%>>
-                                </div>
-
-                                <div>
-                                    <label for="Abajo">Abajo</label>
-                                    <input class="m" name="categoria" id="Abajo" type="checkbox" value="Abajo" <%
-                                    if(producto.categoria.includes("Abajo")===true ){%>checked<%}%>>
-                                </div>
-
-                            </div>
-
                         </div>
-
+                    </section>
+                    <section class="visual_container">
+                        <input type="file" id="imagen" accept="image/*" name="imagenes" multiple>
                     </section>
                     <!-- ///botones//// -->
                     <section class="button_container">
-                        <button class="boton" type="submit">Crear</button>
-                        <button class="boton" type="reset">Borrar</button>
+                        <button class="botonCrear" type="submit">Editar</button>
+                        <button class="botonBorrar" type="reset">Borrar</button>
                     </section>
                     
                     
 
                 </form>
+                <div class="delete_container">
+                    <form action="/admin/eliminar/<%= producto.id  %>?_method=DELETE" method="POST">
+                        <button type="submit">Eliminar producto</button>
+                    </form>
+                </div>
             </section>
-            <section class="delete_container">
-                        <form action="" method="POST">
-
-                            <button type="submit">Eliminar producto</button>
-                        </form>
-                    </section>
         </main>
         <%- include('../partials/footer') %>
 </body>
