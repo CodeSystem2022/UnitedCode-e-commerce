@@ -4,37 +4,42 @@ const db = require('../database/models');
 const controller = {
     category: (req, res)=> {
         const {categoria} = req.params;
-        let promesaCategorias = db.Categoria.findAll({
-            where: {nombre:{ [Op.substring]: "%"+categoria+"%"}},
-            include: [
-                {association: "categoriaProducto"}
-            ]
+        db.Categoria.findOne({
+            where: {
+                nombre: { [Op.substring]: "%" + categoria + "%" }
+            }
         })
-        let promesaProductos = db.Producto.findAll({
-            include: [
-                {association: "imagen"},
-                {association: "categoria"}
-            ]
+        .then((categoriaEncontrada) => {
+            if (categoriaEncontrada) {
+                db.Producto.findAll({
+                    include: [
+                        { model: db.Imagen,
+                            as: "imagen" 
+                        },
+                        {
+                            model: db.Categoria,
+                            as: "categoria",
+                            where: {
+                                nombre: categoriaEncontrada.nombre
+                            }
+                        }
+                    ]
+                })
+                .then((productos) => {
+                    res.render("products/categoria", { productos, categoria });
+                })
+                .catch((error) => {
+                    res.send("Error al obtener los productos asociados a la categoría" + categoria);
+                    console.log(error);
+                });
+            } else {
+                res.send("No se encontró esa categoría");
+            }
         })
-        Promise.all([promesaCategorias, promesaProductos])
-            .then( ([categorias, productos]) => {
-                let arrayId = []
-                for (let i = 0; i < categorias.length; i++) {
-                    arrayId.push(categorias[i].categoriaProducto.id)
-                }
-
-                let productosFiltrados = []
-                for (let i = 0; i < productos.length; i++) {
-                    productosFiltrados = productos.filter(e => arrayId.includes(e.id) === true)
-                    
-                }
-
-                res.render("products/products", {productos: productosFiltrados, categoria});
-            })
-            .catch(error => {
-                res.send('No se encontraron productos con esa categoría')
-                console.log(error)
-            })
+        .catch((error) => {
+            res.send("Error al buscar la categoría en la base de datos");
+            console.log(error);
+        });
         
 
     }

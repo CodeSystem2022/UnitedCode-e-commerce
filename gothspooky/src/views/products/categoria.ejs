@@ -8,29 +8,21 @@
   <%- include('../partials/header')  %>
 
     <main class="categoria">
-        <h1>Categoria <%= categoria%></h1>
+        <h1>Categoria: <%= categoria %></h1>
         <section class="categorias_contenedor">
             <% productos.forEach(producto=>{%>
-            <article class="producto_ofer">
-                <div class="image_container">
-                    <a href="/products/<%= producto.id %>"><img src="/images/products/<%= producto.imagen[0].nombre %>"></a>
-                </div>
-                <div class="detail_container">
-                    <p class="precio">$<%= producto.precio %></p>
-                    <h4 class="titulo"><%= producto.nombre %></h4>
-                </div>
+              <article class="producto_ofer">
+                  <div class="image_container">
+                      <a href="/products/<%= producto.id %>"><img src="/images/products/<%= producto.imagen[0].nombre %>"></a>
+                  </div>
+                  <div class="detail_container">
+                      <p class="precio">$<%= producto.precio %></p>
+                      <h4 class="titulo"><%= producto.nombre %></h4>
+                  </div>
 
-            </article>
+              </article>
             <% }) %> 
         </section>
-      <div class="contenedor-barra">
-        <div class="linea"></div>
-        <h2 class="titulo-principal titulo-categoria" id="titulo-principal">Todos los productos</h2>
-        <div class="linea"></div>
-      </div>
-      <div id="contenedor-productos" class="contenedor-productos">
-         
-      </div>
     </main>
   
       

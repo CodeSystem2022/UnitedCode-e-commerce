@@ -1,4 +1,4 @@
-//const e = require("express");
+/* //const e = require("express");
 
 //products
 const productos = [
@@ -182,3 +182,4 @@ botonesCategorias.forEach(boton => {
 });
 
 
+ */
