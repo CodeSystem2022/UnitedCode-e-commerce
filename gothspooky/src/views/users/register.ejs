@@ -16,7 +16,7 @@
 
         <section>
 
-            <form action="/users/register" method="POST" enctype="multipart/form-data">
+            <form action="/user/register" method="POST">
                 <div class="input-container">
                     <div class="cuenta">
                         <span>¿Ya tienes una cuenta?</span>
@@ -27,87 +27,44 @@
                     <div>
                         <label for="nombre">Nombre</label>
                         <div class="grupo_input">
-                            <input type="text" id="nombre" class="inputs" placeholder="Ingresalo tal como figura en el documento" name="nombre" required value="<%= locals.old && old.nombre ? old.nombre : null %>"">
-                            <i class="error fas fa-times hidden" id="errorNombre"></i>
-                            <i class="check fas fa-check hidden" id="checkNombre"></i>
+                            <input type="text" id="nombre" class="inputs" placeholder="Ingresalo tal como figura en el documento" name="nombre" required >
                         </div>
-                        <% if (locals.errors && errors.nombre) { %>
-                            <small class="errors"><%= errors.nombre.msg %> </small>
-                        
-                        <% } %>
-                        <small class="frontNombre" id="smallsFront"></small>
                     </div>
 
                     <div>
                         <label for="apellido">Apellido</label>
                         <div class="grupo_input">
-                            <input type="text" id="apellido" class="inputs" placeholder="Ingresalo tal como figura en el documento" name="apellido" required value=<%= locals.old && old.apellido ? old.apellido : null %> >
-                            <i class="error fas fa-times hidden" id="errorApellido"></i>
-                            <i class="check fas fa-check hidden" id="checkApellido"></i>
+                            <input type="text" id="apellido" class="inputs" placeholder="Ingresalo tal como figura en el documento" name="apellido" required >
+
                         </div>
-                        <% if (locals.errors && errors.apellido) { %>
-                            <small class="errors"><%= errors.apellido.msg %> </small>
-                        
-                        <% } %>
-                        <small class="frontApellido" id="smallsFront"></small>
                     </div>
 
                     <div>
                         <label for="email">E-mail</label>
                         <div class="grupo_input">
-                            <input type="email" id="email" class="inputs" placeholder="Asegurate de tener acceso a este e-mail" name="email" required value=<%= locals.old && old.email ? old.email : null %>>
-                            <i class="error fas fa-times hidden" id="errorEmail"></i>
-                            <i class="check fas fa-check hidden" id="checkEmail"></i>
+                            <input type="email" id="email" class="inputs" placeholder="Asegurate de tener acceso a este e-mail" name="email" required >
                         </div>
-                        <% if (locals.errors && errors.email) { %>
-                            <small class="errors"><%= errors.email.msg %> </small>
-                        
-                        <% } %>
-                        <small class="frontEmail" id="smallsFront"></small>
                     </div>
 
                     <div>
                         <label for="fechaDeNac">Fecha de nacimiento</label>
                         <div class="grupo_input">
-                            <input type="date" id="fechaDeNac" class="inputs" placeholder="DD/MM/YY" name="fechaDeNac" required value=<%= locals.old && old.fechaDeNac ? old.fechaDeNac : null %>>
-                            <i class="error fas fa-times hidden" id="errorFechaDeNac"></i>
-                            <i class="check fas fa-check hidden" id="checkFechaDeNac"></i>
+                            <input type="date" id="fechaDeNac" class="inputs" placeholder="DD/MM/YY" name="fechaDeNac" required >
                         </div>
-                        <% if (locals.errors && errors.fechaDeNac) { %>
-                            <small class="errors"><%= errors.fechaDeNac.msg %> </small>
-                        
-                        <% } %>
-                        <small class="frontFecha" id="smallsFront"></small>
                     </div>
 
                     <div>
                         <label for="contraseña">Contraseña</label>
                         <div class="grupo_input">
                             <input type="password" id="contraseña" class="inputs" name="contraseña" required minlength="8">
-                            <i class="error fas fa-times hidden" id="errorContraseña"></i>
-                            <i class="check fas fa-check hidden" id="checkContraseña"></i>
-                            <i class="ojitoAct fas fa-eye-slash hidden" id="ocultarContraseña"></i>
-                            <i class="ojitoDes fas fa-eye hidden" id="verContraseña"></i>
                         </div>
-                        <% if (locals.errors && errors.contraseña) { %>
-                            <small class="errors"><%= errors.contraseña.msg %> </small>
-                        
-                        <% } %>
-                        <small class="frontContraseña" id="smallsFront"></small>
                     </div>
 
                     <div>
                         <label for="nombreUsuario">Nombre de Usuario</label>
                         <div class="grupo_input">
                             <input type="text" id="nombreUsuario" class="inputs" placeholder="Elije un nombre de usuario (mínimo 8 caracteres)" name="nombreUsuario" required minlength="8">
-                            <i class="error fas fa-times hidden" id="errorNombreUsuario"></i>
-                            <i class="check fas fa-check hidden" id="checkNombreUsuario"></i>
                         </div>
-                        <% if (locals.errors && errors.usuario) { %>
-                            <small class="errors"><%= errors.usuario.msg %> </small>
-                        
-                        <% } %>
-                        <small class="frontNombreUsuario" id="smallsFront"></small>
                     </div>
 
                 <button type="submit" id="send">Crear Cuenta</button>
@@ -121,6 +78,5 @@
     <%- include('../partials/footer')  %> 
 
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 <script src="../../../js/general.js"></script>
 </html>
