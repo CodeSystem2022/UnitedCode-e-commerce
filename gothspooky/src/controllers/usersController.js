@@ -5,27 +5,31 @@ const controller = {
     vistaRegistro: (req, res) => {
         res.render('users/register');
     },
-    registro: async (req, res) => {
-        try {
-            const { nombre, apellido, email, fechaDeNac, contraseña, nombreUsuario } = req.body;
+    registro: (req, res) => {
+        
+        const { nombre, apellido, email, fechaDeNac, contraseña, nombreUsuario } = req.body;
+        
+        db.Usuario.create({
+            nombre: nombre,
+            apellido: apellido,
+            email: email,
+            contraseña: bcrypt.hashSync(contraseña, 12),
+            nombreUsuario: nombreUsuario,
+            fechaDeNacimiento: fechaDeNac,
+            admin: 0,
+            imagen: "no-image.png" //de momento imagen estática
+        })
+        .then(() => {
+            res.send("Usuario creado exitosamente. Renderizar vista login y enviar el email para usarlo desde el html");
+        })
+        .catch(error => {
+            res.send("Error al crear usuario");
+            console.log(error);
+        });
 
-            const hashedPassword = await bcrypt.hash(contraseña, 12);
-
-            const newUser = await db.Usuario.create({
-                nombre,
-                apellido,
-                email,
-                contraseña: hashedPassword,
-                nombreUsuario,
-                fechaDeNacimiento: fechaDeNac,
-                admin: 0,
-            });
-
-            res.send('Usuario registrado con éxito');
-        } catch (error) {
-            res.send('Error al crear usuario');
-            console.error(error);
-        }
+    },
+    vistaLogin: (req, res) => {
+        res.send("Falta vista login")
     }
 };
 
