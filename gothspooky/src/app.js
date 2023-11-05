@@ -30,7 +30,7 @@ app.use(methodOverride('_method'));
 //rutas
 app.use('/', indexRouter);
 app.use('/user', usersRouter);
-app.use('/detail', detailRouter);
+app.use('/product', detailRouter);
 app.use('/admin', adminRouter);
 app.use('/products', productsRouter);
 app.use('/cart', cartRouter);
