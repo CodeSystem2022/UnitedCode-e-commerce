@@ -30,24 +30,12 @@ const controller = {
     // Crear un producto
 
     crear: (req, res) => {
-        const newProductErrors = validationResult(req);
-
-        if (req.fileValidationError) {
-            let img = {
-                param: "imagenes",
-                msg: req.fileValidationError
-            };
-            newProductErrors.errors.push(img);
-        }
-
-        if (newProductErrors.isEmpty()) {
-            const { nombre, descripcion, precio, stock, categoria, envioGratis } = req.body;
+            const { nombre, descripcion, precio, categoria, envioGratis } = req.body;
 
             db.Producto.create({
                 nombre: nombre,
                 descripcion: descripcion,
                 precio: parseFloat(precio),
-                envio: envioGratis === undefined ? 0 : 1,
                 stock: 1,
             })
                 .then(producto => {
@@ -55,7 +43,7 @@ const controller = {
                         let images = req.files.map(image => {
                             let item = {
                                 nombre: image.filename,
-                                productoId: producto.id,
+                                productoId: producto.id
                             };
                             return item;
                         });
@@ -91,17 +79,14 @@ const controller = {
                     Promise.all([promesaImagenes, promesaCategoria])
                         .then(() => res.redirect("/product/" + producto.id))
                         .catch(error => {
-                            res.send("No se pudo redireccionar al detalle del producto creado");
+                            //res.send("No se pudo redireccionar al detalle del producto creado");
                             console.log(error);
                         });
                 })
                 .catch(error => {
-                    res.send("No se pudo crear el producto");
+                    //res.send("No se pudo crear el producto");
                     console.log(error);
                 });
-        } else {
-            res.render('admin/create', { errors: newProductErrors.mapped(), oldData: req.body });
-        }
     },
 
     // Vista para editar un producto
@@ -127,7 +112,7 @@ const controller = {
                 }
             })
             .catch(error => {
-                res.send("No se pudo obtener el producto de la base de datos");
+                //res.send("No se pudo obtener el producto de la base de datos");
                 console.log(error);
             });
     },
@@ -135,7 +120,7 @@ const controller = {
     // Editar un producto
 
     editar: (req, res) => {
-
+        //Busca el producto en la base de datos
         db.Producto.findOne({
             where: { id: req.params.id },
             include: [
@@ -147,9 +132,9 @@ const controller = {
                 },
             ],
         });
-
+        //Obtenemos los datos que envía el administrador por el formulario
         const { nombre, descripcion, precio, categoria } = req.body;
-
+        //Update: actualiza los datos del producto en la base de datos
         db.Producto.update({
             nombre: nombre,
             descripcion: descripcion,
@@ -176,7 +161,7 @@ const controller = {
                                 .catch(error => console.log(error));
                         })
                         .catch(error => {
-                            res.send("No se pudieron eliminar las imágenes anteriores");
+                            //res.send("No se pudieron eliminar las imágenes anteriores");
                             console.log(error);
                         });
                 } else {
@@ -192,7 +177,7 @@ const controller = {
                             console.log("Se eliminó la categoría anterior");
                         })
                         .catch(error => {
-                            res.send("No se pudo eliminar la categoría anterior");
+                            //res.send("No se pudo eliminar la categoría anterior");
                             console.log(error);
                         });
                     promesaCategoria = db.Categoria.create({
@@ -206,7 +191,7 @@ const controller = {
                     categoria.forEach(e => {
                         let item = {
                             nombre: e,
-                            productoId: req.params.id,
+                            productoId: req.params.id
                         };
                         categoriasACrear.push(item);
                     })
@@ -219,7 +204,7 @@ const controller = {
                                 .catch(error => console.log(error));
                         })
                         .catch(error => {
-                            res.send("No se pudieron eliminar las categorías anteriores");
+                            //res.send("No se pudieron eliminar las categorías anteriores");
                             console.log(error);
                         });
                 }
@@ -227,31 +212,14 @@ const controller = {
                 Promise.all([promesaImagenes, promesaCategoria])
                     .then(() => res.redirect("/product/" + req.params.id))
                     .catch(error => {
-                        res.send("No se pudo redireccionar al detalle del producto editado");
+                        //res.send("No se pudo redireccionar al detalle del producto editado");
                         console.log(error);
                     });
             })
             .catch(error => {
-                res.send("No se pudo editar el producto");
+                //res.send("No se pudo editar el producto");
                 console.log(error);
             });
-        /* } else {
-            db.Producto.findOne({
-                where: { id: req.params.id },
-                include: [
-                    {
-                        association: "imagen",
-                    },
-                ],
-            })
-                .then(producto => {
-                    res.render('admin/edit', { errors: editProductErrors.mapped(), producto, oldData: req.body });
-                })
-                .catch(error => {
-                    console.log(error);
-                    res.send("No se pudieron enviar los errores a la vista de edición");
-                });
-        } */
     },
 
     // Eliminar un producto
@@ -269,23 +237,23 @@ const controller = {
             ]
         })
         .then(producto => {
+            /* elimina el archivo imagen del producto */
             fs.existsSync(path.join(__dirname, '../../public/images/products', producto.imagen[0].nombre))
             fs.unlinkSync(path.join(__dirname, '../../public/images/products', producto.imagen[0].nombre))
             db.Producto.destroy({
                 where: { id: req.params.id }
             })
             .then(result => {
-                res.redirect("/admin");
+                console.log("Producto eliminado");
             })
             .catch(error => {
-                res.send("No se pudo eliminar el producto");
-                console.log(error);
+                //res.send("No se pudo eliminar el producto");
+                console.log("Error al eliminar producto de la base de datos" + error);
             });
-
             res.redirect("/admin");
         })
         .catch(error => {
-            res.send("No se pudo encontrar el producto");
+            //res.send("No se pudo encontrar el producto");
             console.log(error);
         });
     },
