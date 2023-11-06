@@ -3,7 +3,9 @@
 }
 
 .carrito h3 {
-  padding: 50px;
+  padding: 20px;
+  font-size: 25px;
+  text-align:center;
 }
 
 .carrito .container {
@@ -125,14 +127,19 @@
 }
 
 .carrito .tarjeta img {
-  max-width: 50%;
+  max-width: 80%;
   height: auto;
 }
 
 .carrito .vistaProductos {
-  margin: 50px;
+  margin: 20px;
+}
+
+.carrito h1 {
+  font-size: 35px;
+  text-align: center;
 }
 
 .carrito h2 {
-  text-align: center;
+  padding: 20px;
 }

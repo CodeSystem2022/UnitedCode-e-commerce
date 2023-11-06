@@ -25,10 +25,10 @@ productos.forEach((product) => {
   removeButton.addEventListener("click", () => {
     content.remove();
     total -= product.price;
-    totalElementos.innerHTML = `<h2>Total: $ ${total}</h2>`;
+    totalElementos.innerHTML = `<h3>Total: $ ${total}</h3>`;
 
     if (total === 0) {
-      vistaProductos.innerHTML = "<h2>Tu carrito se encuentra vacío</h2>";
+      vistaProductos.innerHTML = "<h3>Tu carrito se encuentra vacío</h3>";
     }
   });
 
@@ -36,9 +36,11 @@ productos.forEach((product) => {
 });
 
 const totalElementos = document.createElement("div");
-totalElementos.innerHTML = `<h2>Total: $ ${total}</h2>`;
+totalElementos.innerHTML = `<h3>Total: $ ${total}</h3>`;
 preciototal.append(totalElementos);
 
 if (total === 0) {
-  vistaProductos.innerHTML = `<h2>Tu carrito se encuentra vacío</h2>`;
+  vistaProductos.innerHTML = `<h3>Tu carrito se encuentra vacío</h3>`;
 }
+
+cartBtn.addEventListener("click", "/");
