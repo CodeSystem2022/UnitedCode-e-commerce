@@ -24,38 +24,26 @@ const controller = {
     // Vista para crear un producto
 
     vistaCrear: (req, res) => {
-        res.render('admin/create');
+        res.render('admin/crear');
     },
 
     // Crear un producto
 
     crear: (req, res) => {
-        const newProductErrors = validationResult(req);
-
-        if (req.fileValidationError) {
-            let img = {
-                param: "imagenes",
-                msg: req.fileValidationError
-            };
-            newProductErrors.errors.push(img);
-        }
-
-        if (newProductErrors.isEmpty()) {
-            const { nombre, descripcion, precio, stock, categoria, envioGratis } = req.body;
+            const { nombre, descripcion, precio, categoria, envioGratis } = req.body;
 
             db.Producto.create({
                 nombre: nombre,
                 descripcion: descripcion,
                 precio: parseFloat(precio),
-                envio: envioGratis === undefined ? 0 : 1,
-                stock: parseInt(stock),
+                stock: 1,
             })
                 .then(producto => {
                     if (req.files.length !== 0) {
                         let images = req.files.map(image => {
                             let item = {
                                 nombre: image.filename,
-                                productoId: producto.id,
+                                productoId: producto.id
                             };
                             return item;
                         });
@@ -91,17 +79,14 @@ const controller = {
                     Promise.all([promesaImagenes, promesaCategoria])
                         .then(() => res.redirect("/product/" + producto.id))
                         .catch(error => {
-                            res.send("No se pudo redireccionar al detalle del producto creado");
+                            //res.send("No se pudo redireccionar al detalle del producto creado");
                             console.log(error);
                         });
                 })
                 .catch(error => {
-                    res.send("No se pudo crear el producto");
+                    //res.send("No se pudo crear el producto");
                     console.log(error);
                 });
-        } else {
-            res.render('admin/create', { errors: newProductErrors.mapped(), oldData: req.body });
-        }
     },
 
     // Vista para editar un producto
@@ -113,176 +98,164 @@ const controller = {
                 {
                     association: "imagen",
                 },
+                {
+                    association: "categoria",
+                }
             ],
         })
             .then(producto => {
-                res.render('admin/edit', { producto });
+                res.render('admin/editar', { producto });
+                if (producto.categoria.includes("Ofertas")) {
+                    console.log("No tiene la categoria ofertas");
+                } else {
+                    console.log("Si tiene la categoria ofertas");
+                }
             })
             .catch(error => {
+                //res.send("No se pudo obtener el producto de la base de datos");
                 console.log(error);
-                res.send("No se pudo obtener el producto de la base de datos");
             });
     },
 
     // Editar un producto
 
     editar: (req, res) => {
-        const editProductErrors = validationResult(req);
-
+        //Busca el producto en la base de datos
         db.Producto.findOne({
             where: { id: req.params.id },
             include: [
                 {
                     association: "imagen",
                 },
+                {
+                    association: "categoria",
+                },
             ],
         });
-
-        if (editProductErrors.isEmpty()) {
-            const { nombre, descripcion, precio, stock, categoria, envioGratis } = req.body;
-
-            db.Producto.update({
-                nombre: nombre,
-                descripcion: descripcion,
-                precio: parseFloat(precio),
-                envio: envioGratis === undefined ? 0 : 1,
-                stock: parseInt(stock),
-            }, {
-                where: { id: req.params.id }
-            })
-                .then(producto => {
-                    var promesaImagenes;
-                    if (req.files.length !== 0) {
-                        let images = req.files.map(image => {
-                            let item = {
-                                nombre: image.filename,
-                                productoId: req.params.id,
-                            };
-                            return item;
+        //Obtenemos los datos que envía el administrador por el formulario
+        const { nombre, descripcion, precio, categoria } = req.body;
+        //Update: actualiza los datos del producto en la base de datos
+        db.Producto.update({
+            nombre: nombre,
+            descripcion: descripcion,
+            precio: parseFloat(precio)
+        }, {
+            where: { id: req.params.id }
+        })
+            .then(producto => {
+                var promesaImagenes;
+                if (req.files.length !== 0) {
+                    let images = req.files.map(image => {
+                        let item = {
+                            nombre: image.filename,
+                            productoId: req.params.id,
+                        };
+                        return item;
+                    })
+                    db.Imagen.destroy({
+                        where: { productoId: req.params.id }
+                    })
+                        .then(() => {
+                            promesaImagenes = db.Imagen.bulkCreate(images)
+                                .then(() => console.log('Imágenes actualizadas satisfactoriamente'))
+                                .catch(error => console.log(error));
                         })
-                        db.Imagen.destroy({
-                            where: { productoId: req.params.id }
-                        })
-                            .then(() => {
-                                promesaImagenes = db.Imagen.bulkCreate(images)
-                                    .then(() => console.log('Imágenes actualizadas satisfactoriamente'))
-                                    .catch(error => console.log(error));
-                            })
-                            .catch(error => {
-                                res.send("No se pudieron eliminar las imágenes anteriores");
-                                console.log(error);
-                            });
-                    } else {
-                        console.log("No se agregaron imágenes nuevas a este producto");
-                    }
-
-                    var promesaCategoria;
-                    if (typeof categoria === 'string') {
-                        db.Categoria.destroy({
-                            where: { productoId: req.params.id }
-                        })
-                            .then(() => {
-                                console.log("Se eliminó la categoría anterior");
-                            })
-                            .catch(error => {
-                                res.send("No se pudo eliminar la categoría anterior");
-                                console.log(error);
-                            });
-                        promesaCategoria = db.Categoria.create({
-                            nombre: categoria,
-                            productoId: req.params.id
-                        })
-                            .then(() => console.log('Categoría actualizada satisfactoriamente'))
-                            .catch(error => console.log(error));
-                    } else {
-                        let categoriasACrear = [];
-                        categoria.forEach(e => {
-                            let item = {
-                                nombre: e,
-                                productoId: req.params.id,
-                            };
-                            categoriasACrear.push(item);
-                        })
-                        db.Categoria.destroy({
-                            where: { productoId: req.params.id }
-                        })
-                            .then(() => {
-                                promesaCategoria = db.Categoria.bulkCreate(categoriasACrear)
-                                    .then(() => console.log('Categorías actualizadas satisfactoriamente'))
-                                    .catch(error => console.log(error));
-                            })
-                            .catch(error => {
-                                res.send("No se pudieron eliminar las categorías anteriores");
-                                console.log(error);
-                            });
-                    }
-
-                    Promise.all([promesaImagenes, promesaCategoria])
-                        .then(() => res.redirect("/product/" + req.params.id))
                         .catch(error => {
-                            res.send("No se pudo redireccionar al detalle del producto editado");
+                            //res.send("No se pudieron eliminar las imágenes anteriores");
                             console.log(error);
                         });
-                })
-                .catch(error => {
-                    res.send("No se pudo editar el producto");
-                    console.log(error);
-                });
-        } else {
-            db.Producto.findOne({
-                where: { id: req.params.id },
-                include: [
-                    {
-                        association: "imagen",
-                    },
-                ],
+                } else {
+                    console.log("No se agregaron imágenes nuevas a este producto");
+                }
+
+                var promesaCategoria;
+                if (typeof categoria === 'string') {
+                    db.Categoria.destroy({
+                        where: { productoId: req.params.id }
+                    })
+                        .then(() => {
+                            console.log("Se eliminó la categoría anterior");
+                        })
+                        .catch(error => {
+                            //res.send("No se pudo eliminar la categoría anterior");
+                            console.log(error);
+                        });
+                    promesaCategoria = db.Categoria.create({
+                        nombre: categoria,
+                        productoId: req.params.id
+                    })
+                        .then(() => console.log('Categoría actualizada satisfactoriamente'))
+                        .catch(error => console.log(error));
+                } else {
+                    let categoriasACrear = [];
+                    categoria.forEach(e => {
+                        let item = {
+                            nombre: e,
+                            productoId: req.params.id
+                        };
+                        categoriasACrear.push(item);
+                    })
+                    db.Categoria.destroy({
+                        where: { productoId: req.params.id }
+                    })
+                        .then(() => {
+                            promesaCategoria = db.Categoria.bulkCreate(categoriasACrear)
+                                .then(() => console.log('Categorías actualizadas satisfactoriamente'))
+                                .catch(error => console.log(error));
+                        })
+                        .catch(error => {
+                            //res.send("No se pudieron eliminar las categorías anteriores");
+                            console.log(error);
+                        });
+                }
+
+                Promise.all([promesaImagenes, promesaCategoria])
+                    .then(() => res.redirect("/product/" + req.params.id))
+                    .catch(error => {
+                        //res.send("No se pudo redireccionar al detalle del producto editado");
+                        console.log(error);
+                    });
             })
-                .then(producto => {
-                    res.render('admin/edit', { errors: editProductErrors.mapped(), producto, oldData: req.body });
-                })
-                .catch(error => {
-                    console.log(error);
-                    res.send("No se pudieron enviar los errores a la vista de edición");
-                });
-        }
+            .catch(error => {
+                //res.send("No se pudo editar el producto");
+                console.log(error);
+            });
     },
 
     // Eliminar un producto
 
     eliminar: (req, res) => {
+        /* busca el producto en la base de datos */
         db.Producto.findByPk(req.params.id, {
             include: [
                 {
                     association: "imagen",
+                },
+                {
+                    association: "categoria",
                 }
             ]
         })
-            .then(producto => {
-                if (producto.imagen.length !== 0) {
-                    producto.imagen.forEach(e => {
-                        if (fs.existsSync(path.join(__dirname, '../../public/img/productos', e.nombre))) {
-                            fs.unlinkSync(path.join(__dirname, '../../public/img/productos', e.nombre));
-                        }
-                    });
-                }
-
-                db.Producto.destroy({
-                    where: { id: req.params.id }
-                })
-                    .then(result => {
-                        res.redirect("/admin");
-                    })
-                    .catch(error => {
-                        res.send("No se pudo eliminar el producto");
-                        console.log(error);
-                    });
-
-                res.redirect("/admin");
+        .then(producto => {
+            /* elimina el archivo imagen del producto */
+            fs.existsSync(path.join(__dirname, '../../public/images/products', producto.imagen[0].nombre))
+            fs.unlinkSync(path.join(__dirname, '../../public/images/products', producto.imagen[0].nombre))
+            db.Producto.destroy({
+                where: { id: req.params.id }
+            })
+            .then(result => {
+                console.log("Producto eliminado");
             })
             .catch(error => {
-                res.send("No se pudo encontrar el producto");
-                console.log(error);
+                //res.send("No se pudo eliminar el producto");
+                console.log("Error al eliminar producto de la base de datos" + error);
             });
+            res.redirect("/admin");
+        })
+        .catch(error => {
+            //res.send("No se pudo encontrar el producto");
+            console.log(error);
+        });
     },
 };
 

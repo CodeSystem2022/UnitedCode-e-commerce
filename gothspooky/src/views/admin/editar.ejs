@@ -15,11 +15,11 @@
             <section class="product_container">
                 <h1>Editando: <%= producto.nombre  %></h1>
 
-                <form class="todo_container" action="/admin/edit/<%= producto.id  %>?_method=PUT" method="POST" enctype="multipart/form-data">
+                <form class="todo_container editForm" action="/admin/edit/<%= producto.id  %>?_method=PUT" method="POST" enctype="multipart/form-data">
 
                     <section class="visual_container">
                         <!-- ////imagen de archivo//// -->
-                        <img src="/images/products/<%= producto.imagen %>" alt="">
+                        <img src="/images/products/<%= producto.imagen[0].nombre %>" alt="">
 
                         <!-- /////Nombre de Producto///// -->
                         <div class="selec info_titulo_container">
@@ -47,7 +47,7 @@
                                 <div class="editCategorias" >
                                     <label for="Ofertas">Ofertas</label>
                                     <input class="m" name="categoria" id="Ofertas" type="checkbox" value="Ofertas"
-                                        <% if(producto.categoria.includes("Ofertas") === true ){%>checked<%}%> >
+                                        <% if(producto.categoria.includes("Ofertas") === true ) { %> checked <% } %> >
                                 </div>
                                     <!-- Si el producto en algunas de las categorías tiene "Ofertas" el checkbox pasa a estar en su estado checked, sino no hace nada -->
                                 <div class="editCategorias" >

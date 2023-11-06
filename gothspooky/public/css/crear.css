@@ -13,7 +13,7 @@ main.crear section.product_container h1{
 main.crear section.product_container form.todo_container {
     background-color: var(--black);
     max-width: 400px;
-    margin: 30px auto 0px auto;
+    margin: 30px auto 20px auto;
     border-radius: 5px 5px 0px 0px;
 }
 
@@ -175,4 +175,8 @@ main.crear div.delete_container form button {
     font-weight: bold;
     border-radius: 10px;
     cursor: pointer;
+}
+
+main.crear section.product_container form.editForm {
+    margin: 30px auto 0px auto;
 }

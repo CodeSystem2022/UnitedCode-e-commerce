@@ -16,7 +16,33 @@
     overflow: hidden;
     background-color: #000000;
 }
+.home .producto-detalles {
+    background-color: var(--clr-black);
+    color: var(--clr-white);
+    padding: .5rem;
+    border-radius: 1rem;
+    margin-top: -2rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+.home .producto-agregar {
+    border: 0;
+    background-color: var(--clr-white);
+    color: var(--clr-black);
+    padding: .5rem;
+    text-transform: uppercase;
+    border-radius: 2rem;
+    cursor: pointer;
+    border: 2px solid var(--clr-white);
+    transition: background-color .2s, color .2s;
+}
 
+.home .producto-agregar:hover {
+    background-color: var(--clr-black);
+    color: var(--clr-white);
+}
 .home .slider--inner {
     display: flex;
     flex-direction: row;
