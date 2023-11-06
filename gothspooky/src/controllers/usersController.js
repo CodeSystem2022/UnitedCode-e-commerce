@@ -29,7 +29,10 @@ const controller = {
 
     },
     vistaLogin: (req, res) => {
-        res.send("Falta vista login")
+        res.render('users/login')
+    }, 
+    login:(req, res) =>{
+        
     }
 };
 
