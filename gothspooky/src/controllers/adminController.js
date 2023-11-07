@@ -224,39 +224,49 @@ const controller = {
 
     // Eliminar un producto
 
-    eliminar: (req, res) => {
-        /* busca el producto en la base de datos */
-        db.Producto.findByPk(req.params.id, {
-            include: [
-                {
-                    association: "imagen",
-                },
-                {
-                    association: "categoria",
-                }
-            ]
-        })
-        .then(producto => {
-            /* elimina el archivo imagen del producto */
-            fs.existsSync(path.join(__dirname, '../../public/images/products', producto.imagen[0].nombre))
-            fs.unlinkSync(path.join(__dirname, '../../public/images/products', producto.imagen[0].nombre))
-            db.Producto.destroy({
-                where: { id: req.params.id }
-            })
-            .then(result => {
-                console.log("Producto eliminado");
-            })
-            .catch(error => {
-                //res.send("No se pudo eliminar el producto");
-                console.log("Error al eliminar producto de la base de datos" + error);
+    eliminar: async (req, res) => {
+        try {
+            const producto = await db.Producto.findByPk(req.params.id, {
+                include: [
+                    {
+                        association: "imagen",
+                    },
+                    {
+                        association: "categoria",
+                    }
+                ]
             });
-            res.redirect("/admin");
-        })
-        .catch(error => {
-            //res.send("No se pudo encontrar el producto");
-            console.log(error);
-        });
-    },
+    
+            if (!producto) {
+                return res.status(404).send("Producto no encontrado");
+            }
+    
+            // Inicia una transacción
+            const transaction = await db.sequelize.transaction();
+    
+            try {
+                // Elimina el archivo de imagen del producto
+                const imagePath = path.join(__dirname, '../../public/images/products', producto.imagen[0].nombre);
+                if (fs.existsSync(imagePath)) {
+                    fs.unlinkSync(imagePath);
+                }
+    
+                // Elimina el producto de la base de datos dentro de la transacción
+                await producto.destroy({ transaction });
+    
+                // Confirma la transacción
+                await transaction.commit();
+    
+                return res.redirect("/admin");
+            } catch (error) {
+                // Revierte la transacción en caso de error
+                await transaction.rollback();
+                return res.status(500).send("Error al eliminar producto: " + error.message);
+            }
+        } catch (error) {
+            return res.status(500).send("Error al buscar el producto: " + error.message);
+        }
+    }
 };
 
 module.exports = controller;
