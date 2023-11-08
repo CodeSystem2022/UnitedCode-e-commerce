@@ -1,19 +1,20 @@
     <header class="header">
         <div class="top-section">
             <div class="logo-container">
-                <a href="/">
-                    <img src="/images/design/logo.png" alt="Mi Logo"> <!-- Logo de la tienda -->
-                </a>
-                
+                <img src="/images/design/logo.png" alt="Mi Logo"> <!-- Logo de la tienda -->
             </div>
             <div class="search-bar">
                 <input type="text" class="search-input" placeholder="Buscar productos...">
-                <button class="search-button"><i class="fa fa-search"></i></button>
+                <button 
+                    class="search-button"><i class="fa fa-search"></i></button>
             </div>
             <div class="icons">
-                <button class="user-button"><i class="fa fa-user"></i></button>
-                <button class="cart-button"><i class="fa fa-shopping-cart"></i></button>
-
+                <button class="user-button"><i class="fa fa-user"></i>
+                    
+                </button>
+                <a href="/cart">
+                    <button class="cart-button"><i class="fa fa-shopping-cart"></i></button></a>
+                        <span id="cart-Counter" class="cart-counter">0</span>
             </div>
         </div>
         <div class="bottom-section">

@@ -14,6 +14,8 @@ const cartRouter = require('./routes/cart');
 const detailRouter = require('./routes/detailRouter');
 const categoriaRouter = require('./routes/categoriaRouter');
 
+// Controlador de administrador
+const adminController = require('./controllers/adminController');
 
 const app = express();
 
@@ -37,6 +39,8 @@ app.use('/products', productsRouter);
 app.use('/cart', cartRouter);
 app.use('/categoria', categoriaRouter);
 
+// Ruta para eliminar un producto
+app.post('/admin/eliminar/:id', adminController.eliminar);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
