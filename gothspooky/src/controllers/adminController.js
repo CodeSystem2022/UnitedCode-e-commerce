@@ -245,10 +245,12 @@ const controller = {
             const transaction = await db.sequelize.transaction();
     
             try {
-                // Elimina el archivo de imagen del producto
-                const imagePath = path.join(__dirname, '../../public/images/products', producto.imagen[0].nombre);
-                if (fs.existsSync(imagePath)) {
-                    fs.unlinkSync(imagePath);
+             // Elimina el archivo de imagen del producto si existen imágenes
+                if (producto.imagen && producto.imagen.length > 0) {
+                    const imagePath = path.join(__dirname, '../../public/images/products', producto.imagen[0].nombre);
+                    if (fs.existsSync(imagePath)) {
+                        fs.unlinkSync(imagePath);
+                    }
                 }
     
                 // Elimina el producto de la base de datos dentro de la transacción
