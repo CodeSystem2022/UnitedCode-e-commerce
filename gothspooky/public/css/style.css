@@ -1,9 +1,14 @@
 /* Se importan todas las hojas de estilo */
 @import url("./footer.css");
 @import url("./admin.css");
+@import url("./crear.css");
 @import url("./header.css");
 @import url("./general.css");
 @import url("./home.css");
 @import url("./detail.css");
 @import url("./cart.css");
 @import url("./products.css");
+@import url("./categorias.css");
+@import url("./index.css");
+@import url("./register.css");
+@import url("./login.css");

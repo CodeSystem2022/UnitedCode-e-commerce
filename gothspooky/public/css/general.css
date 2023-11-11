@@ -20,8 +20,8 @@ html {
 
 /* Variable de los colores */
 :root{
-    --black: #000000;
-    --white: #FFFF;
+    --black: #000;
+    --white: #fff;
     --color1: #A30D57;
     --color2: #C23348;
     --color3: #EFB5B5;

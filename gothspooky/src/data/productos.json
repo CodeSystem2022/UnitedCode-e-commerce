@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "nombre": "Articulo 1",
+    "precio": "5000",
+    "categoria": [
+      "Abajo"
+    ],
+    "descripcion": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur illo aliquam adipisci, totam sequi laborum blanditiis dolorem illum sit, quam nostrum saepe tenetur doloremque cum temporibus laudantium voluptatum veritatis. Nisi?",
+    "imagen": [
+      "producto1.jpg"
+    ]
+  },
+  {
+    "id": 2,
+    "nombre": "Articulo 2",
+    "precio": 10000,
+    "categoria": [
+      "Arriba"
+    ],
+    "descripcion": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur illo aliquam adipisci, totam sequi laborum blanditiis dolorem illum sit, quam nostrum saepe tenetur doloremque cum temporibus laudantium voluptatum veritatis. Nisi?",
+    "imagen": [
+      "producto2.jpg"
+    ]
+  },
+  {
+    "id": 3,
+    "nombre": "Articulo 3",
+    "precio": 15000,
+    "categoria": [
+      "Accesorios"
+    ],
+    "descripcion": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur illo aliquam adipisci, totam sequi laborum blanditiis dolorem illum sit, quam nostrum saepe tenetur doloremque cum temporibus laudantium voluptatum veritatis. Nisi?",
+    "imagen": [
+      "producto3.jpg"
+    ]
+  },
+  {
+    "id": 4,
+    "nombre": "Articulo 4",
+    "precio": 25000,
+    "categoria": [
+      "Ofertas"
+    ],
+    "descripcion": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur illo aliquam adipisci, totam sequi laborum blanditiis dolorem illum sit, quam nostrum saepe tenetur doloremque cum temporibus laudantium voluptatum veritatis. Nisi?",
+    "imagen": [
+      "producto4.jpg"
+    ]
+  },
+  {
+    "id": 5,
+    "nombre": "Articulo 5",
+    "precio": 5000,
+    "categoria": [
+      "Nuevos"
+    ],
+    "descripcion": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur illo aliquam adipisci, totam sequi laborum blanditiis dolorem illum sit, quam nostrum saepe tenetur doloremque cum temporibus laudantium voluptatum veritatis. Nisi?",
+    "imagen": [
+      "producto1.jpg"
+    ]
+  },
+  {
+    "id": 6,
+    "nombre": "Articulo 6",
+    "precio": 10000,
+    "categoria": [
+      "Accesorios"
+    ],
+    "descripcion": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur illo aliquam adipisci, totam sequi laborum blanditiis dolorem illum sit, quam nostrum saepe tenetur doloremque cum temporibus laudantium voluptatum veritatis. Nisi?",
+    "imagen": [
+      "producto2.jpg"
+    ]
+  },
+  {
+    "id": 7,
+    "nombre": "Articulo 7",
+    "precio": 15000,
+    "categoria": [
+      "Nuevos"
+    ],
+    "descripcion": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur illo aliquam adipisci, totam sequi laborum blanditiis dolorem illum sit, quam nostrum saepe tenetur doloremque cum temporibus laudantium voluptatum veritatis. Nisi?",
+    "imagen": [
+      "producto3.jpg"
+    ]
+  },
+  {
+    "id": 8,
+    "nombre": "Articulo 8",
+    "precio": 25000,
+    "categoria": [
+      "Ofertas"
+    ],
+    "descripcion": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur illo aliquam adipisci, totam sequi laborum blanditiis dolorem illum sit, quam nostrum saepe tenetur doloremque cum temporibus laudantium voluptatum veritatis. Nisi?",
+    "imagen": [
+      "producto4.jpg"
+    ]
+  }
+]

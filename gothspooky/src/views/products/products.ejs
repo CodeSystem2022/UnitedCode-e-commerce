@@ -1,12 +1,27 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <%- include('../partials/head')  %>
-        <title>Productos</title>
-    </head>
-  <body>
-    <main class="allProducts">
-        <h1 class="title">Nuestros Productos</h1>
+<html lang="es">
+<head>
+  <%- include('../partials/head')  %>
+  <%- include('../partials/header')  %>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gothspooky</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <main class="products">
+      <div class="contenedor-barra">
+        <div class="linea"></div>
+        <h2 class="titulo-principal titulo-categoria" id="titulo-principal">Todos los productos</h2>
+        <div class="linea"></div>
+      </div>
+      <div id="contenedor-productos" class="contenedor-productos">
+         
+      </div>
     </main>
-  </body>
+  
+      
+  <%- include('../partials/footer')  %>
+  <script src="js/categorias.js"></script>
+</body>
 </html>

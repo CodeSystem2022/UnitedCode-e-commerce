@@ -1,3 +1,145 @@
-.cart {
-    background-color: none;
+.carrito body {
+  background-color: white;
+}
+
+.carrito h3 {
+  padding: 20px;
+  font-size: 25px;
+  text-align:center;
+}
+
+.carrito .container {
+  padding: 50px;
+  text-align: center;
+}
+
+.carrito .container2 {
+  margin: 0px 100px 0px;
+}
+
+.carrito .title {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+}
+
+.carrito .title::before,
+.carrito .title::after {
+  content: "";
+  height: 2px;
+  background-color: #000;
+  display: block;
+}
+
+.carrito .title2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 10rem;
+}
+
+.carrito .title2::before,
+.carrito .title2::after {
+  content: "";
+  height: 2px;
+  background-color: #000;
+  display: block;
+}
+
+.carrito .primerlinea {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px;
+}
+
+.carrito .formulario {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.carrito .form form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.carrito .form form input {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #c6c6c6;
+}
+
+.carrito p {
+  padding: 5px;
+}
+
+.carrito .btnpagar {
+  padding: 10em;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.carrito button {
+  width: 200px;
+  background-color: #e50e0e;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.carrito button:hover {
+  background-color: #b33900;
+}
+
+.carrito .product {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.carrito .product-info {
+  flex: 1;
+  text-align: left;
+}
+
+.carrito .product-info h4 {
+  margin-left: 100px;
+}
+
+.carrito .price {
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.carrito .delete-product {
+  margin-top: 20px;
+  margin-left: 2em;
+  cursor: pointer;
+}
+
+.carrito .tarjeta {
+  width: 200px;
+  border-radius: 5px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+  margin-top: 10px;
+  text-align: center;
+}
+
+.carrito .tarjeta img {
+  max-width: 80%;
+  height: auto;
+}
+
+.carrito .vistaProductos {
+  margin: 20px;
+}
+
+.carrito h1 {
+  font-size: 35px;
+  text-align: center;
+}
+
+.carrito h2 {
+  padding: 20px;
 }

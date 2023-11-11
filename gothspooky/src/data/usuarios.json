@@ -1,0 +1,13 @@
+[
+    {
+        "id": 1,
+        "nombre": "Prueba",
+        "apellido": "Pepito",
+        "email": "prueba@gmail.com",
+        "contraseña": "1234",
+        "nombreUsuario": "Pepito1234",
+        "fechaNacimiento": "2000-12-12",
+        "admin": 1,
+        "imagen": "prueba.png"
+    }
+]

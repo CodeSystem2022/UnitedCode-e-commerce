@@ -1,26 +1,30 @@
     <header class="header">
         <div class="top-section">
             <div class="logo-container">
-                <img src="logo.jpeg" alt="Mi Logo"> <!-- Logo de la tienda -->
+                <img src="/images/design/logo.png" alt="Mi Logo"> <!-- Logo de la tienda -->
             </div>
             <div class="search-bar">
                 <input type="text" class="search-input" placeholder="Buscar productos...">
-                <button class="search-button"><i class="fa fa-search"></i></button>
+                <button 
+                    class="search-button"><i class="fa fa-search"></i></button>
             </div>
             <div class="icons">
-                <button class="user-button"><i class="fa fa-user"></i></button>
-                <button class="cart-button"><i class="fa fa-shopping-cart"></i></button>
-
+                <button class="user-button"><i class="fa fa-user"></i>
+                    
+                </button>
+                <a href="/cart">
+                    <button class="cart-button"><i class="fa fa-shopping-cart"></i></button></a>
+                        <span id="cart-Counter" class="cart-counter">0</span>
             </div>
         </div>
         <div class="bottom-section">
             <nav class="nav-menu">
-                <a href="#">Ofertas</a>
-                <a href="#">Nuevos ingresos</a>
-                <a href="#">Accesorios</a>
-                <a href="#">Parte de arriba</a>
-                <a href="#">Parte de abajo</a>
-                <a href="#">Todos los productos</a>
+                <a href="/categoria/ofertas" id="ofertas" class="boton-categoria">Ofertas</a>
+                <a href="/categoria/ingresantes" id="nuevos-ingresos" class="boton-categoria">Nuevos ingresos</a>
+                <a href="/categoria/accesorios" id="accesorios" class="boton-categoria">Accesorios</a>
+                <a  href="/categoria/arriba" id="parte-de-arriba" class="boton-categoria">Parte de arriba</a>
+                <a href="/categoria/abajo" id="parte-de-abajo" class="boton-categoria">Parte de abajo</a>
+                <a href="/products" id="todos" class="boton-categoria">Todos los productos</a>
             </nav>
         </div>
     </header>

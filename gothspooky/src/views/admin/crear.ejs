@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('../partials/head')  %>
+        <title>Crear producto</title>
+    </head>
+  <body>
+    <%- include('../partials/header')  %>
+    <main class="crear">
+        <section class="product_container">
+            <h1>Crear Producto  <i class="fas fa-box"></i></h1>
+    
+            <form class="todo_container" action="/admin" method="POST" enctype="multipart/form-data">
+    
+                <section class="info_container">
+                    <!-- /////Nombre de Producto///// -->
+                    <div class= "selec info_titulo_container">
+                        <p>Nombre de Producto</p>
+                        <input class="input_info" name="nombre" placeholder="Ingresá un nombre">
+                    </div>
+                    <!-- /////Descripcion de Producto///// -->
+                    <div class= "selec info_des_container">
+                        <p>Descripción</p>
+                        <textarea name="descripcion" id="" placeholder="Ingresá una descripción"></textarea>
+                    </div>
+                    <!-- /////Precio de producto///// -->
+                    <div class= "selec info_precio_container">
+                        <p>Precio $</p>
+                        <input class="input_info" type="number" name="precio" placeholder="Ingresá un precio" required>
+                    </div>
+                    <!-- /////categoria de producto///// -->
+                    <div class= "selec info_categoria_container">
+                        <p>Categoría</p>
+                        
+                        <div class="categoria1">
+                            <div>
+                                <label for="Ofertas">Ofertas</label>
+                                <input class="m" name="categoria" id="Ofertas" type="checkbox" value="Ofertas">
+                            </div>
+    
+                            <div>
+                                <label for="nuevos">Nuevos Ingresos</label>
+                                <input class="m" name="categoria" id="nuevos" type="checkbox" value="Nuevos">
+                            </div>
+    
+                            <div>
+                                <label for="Accesorios">Accesorios</label>
+                                <input class="m" name="categoria" id="Accesorios" type="checkbox" value="Accesorios">
+                            </div>
+    
+                            <div>
+                                <label for="Arriba">Parte de arriba</label>
+                                <input class="m" name="categoria" id="Arriba" type="checkbox" value="Arriba">
+                            </div>
+    
+                            <div>
+                                <label for="Abajo">Parte de abajo</label>
+                                <input class="m"  name="categoria" id="Abajo" type="checkbox" value="Abajo">
+                            </div>
+                        </div>
+    
+                    </div>
+                    
+                </section>
+
+                <section class="visual_container">
+                    <input type="file" id="imagen" accept="image/*" name="imagenes" multiple>
+                </section>
+                <section class="button_container">
+                    <button class="botonCrear" type="submit">Crear</button>
+                    <button class="botonBorrar" type="reset">Borrar</button>
+                </section>
+    
+            </form>
+        </section>
+    </main>
+    <%- include('../partials/footer')  %>
+  </body>
+</html>
