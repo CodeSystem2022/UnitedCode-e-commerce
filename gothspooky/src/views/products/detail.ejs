@@ -7,195 +7,24 @@
   <%- include('../partials/header') %>
   <body class="body">
     <main class="detail">
-      <div class="container-title">
-        <img src="gothspooky/public/images/design/banner.png" alt="" />
-      </div>
-
-      <div class="container-general">
-        <div class="container-title-principal" id="title-principal">
-          <div>
-            <img src="gothspooky/public/images/design/barra.png" alt="" />
-          </div>
-          <div>
-            <h2>Detalle de producto</h2>
-          </div>
-          <div>
-            <img src="gothspooky/public/images/design/barra.png" alt="" />
-          </div>
+      <div class="product-box">
+        <div class="product-title" style="background-color: #333; color: white; padding: 10px;">
+          <h1><%= producto.nombre %></h1>
         </div>
-        <div class="container-detail-description">
-          <div class="container-name">
-            <h2><%= producto.nombre %></h2>
+        <div class="product-info">
+          <div class="product-image" style="text-align: center;">
+            <img src="/images/products/<%= producto.imagen[0].nombre %>" alt="">
           </div>
-          <div class="container-info-product">
-            <div class="container-detail">
-              <div class="conteCarrouselController">
-                <a href="#itemCarrousel-1"
-                  ><img
-                    src="gothspooky/public/images/products/producto1.jpg"
-                    alt=""
-                /></a>
-                <a href="#itemCarrousel-2"
-                  ><img
-                    src="gothspooky/public/images/products/producto2.jpg"
-                    alt=""
-                /></a>
-                <a href="#itemCarrousel-3"
-                  ><img
-                    src="gothspooky/public/images/products/producto3.jpg"
-                    alt=""
-                /></a>
-                <a href="#itemCarrousel-4"
-                  ><img
-                    src="gothspooky/public/images/products/producto4.jpg"
-                    alt=""
-                /></a>
-              </div>
-              <div class="carousel-container">
-                <div class="carousel">
-                  <div class="carousel-item" id="itemCarrousel-1">
-                    <img
-                      src="/images/products/<%= producto.imagen[0].nombre  %>"
-                      alt="<%= producto.nombre %> imagen 1"
-                    />
-                  </div>
-                  <div class="carousel-item" id="itemCarrousel-2">
-                    <img
-                      src="gothspooky/public/images/products/producto2.jpg"
-                      alt="Imagen 2"
-                    />
-                  </div>
-                  <div class="carousel-item" id="itemCarrousel-3">
-                    <img
-                      src="gothspooky/public/images/products/producto3.jpg"
-                      alt="Imagen 3"
-                    />
-                  </div>
-                  <div class="carousel-item" id="itemCarrousel-4">
-                    <img
-                      src="gothspooky/public/images/products/producto4.jpg" 
-                      alt="Imagen 4"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="container-button">
-              <button class="btn-add-to-cart">
-                  Añadir al Carrito
-              </button>
-            </div>
+          <div class="product-description" style="text-align: center;"> 
+            <h2>Detalle del Producto</h2>
+            <p><%= producto.descripcion %></p>
+            <h3>Precio: <%= producto.precio %></h3>
           </div>
-          <div class="container-description">
-            <div
-              class="container-title-principal"
-              id="title-principal-descripcion"
-            >
-              <div>
-                <img src="gothspooky/public/images/design/barra.png" alt="" />
-              </div>
-              <div>
-                <h2>descripcion</h2>
-              </div>
-              <div>
-                <img src="gothspooky/public/images/design/barra.png" alt="" />
-              </div>
-            </div>
-
-            <div class="text-description">
-              <p>
-                <%= producto.descripcion %>
-              </p>
-            </div>
-          </div>
+          <div style="clear: both;"></div>
         </div>
-
-        <section class="container-related-products">
-          <div class="container-title-principal" id="title-principal-related">
-            <div>
-              <img src="gothspooky/public/images/design/barra.png" alt="" />
-            </div>
-            <div>
-              <h2>Productos Relacionados</h2>
-            </div>
-            <div>
-              <img src="gothspooky/public/images/design/barra.png" alt="" />
-            </div>
-          </div>
-          <div class="card-list-products">
-            <div class="card">
-              <div class="card-img">
-                <a href="#gothspooky/src/views/products/detail.ejs">
-                  <img
-                    src="gothspooky/public/images/products/producto1.jpg"
-                    alt="producto-2"
-                  />
-                </a>
-              </div>
-              <div class="info-card">
-                <div class="text-product">
-                  <a href="#gothspooky/src/views/products/detail.ejs">
-                    <h3>Lorem Lorem ipsum</h3>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-img">
-                <a href="gothspooky/src/views/products/detail.ejs#">
-                  <img
-                    src="gothspooky/public/images/products/producto2.jpg"
-                    alt="producto-2"
-                  />
-                </a>
-              </div>
-              <div class="info-card">
-                <div class="text-product">
-                  <a href="#gothspooky/src/views/products/detail.ejs">
-                    <h3>Lorem Lorem ipsum</h3>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-img">
-                <a href="#gothspooky/src/views/products/detail.ejs">
-                  <img
-                    src="gothspooky/public/images/products/producto3.jpg"
-                    alt="producto-4"
-                  />
-                </a>
-              </div>
-
-              <div class="info-card">
-                <div class="text-product">
-                  <a href="#gothspooky/src/views/products/detail.ejs">
-                    <h3>Lorem Lorem ipsum</h3>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="card">
-              <div class="card-img">
-                <a href="#gothspooky/src/views/products/detail.ejs"
-                  ><img
-                    src="gothspooky/public/images/products/producto4.jpg"
-                    alt="producto-4"
-                  />
-                </a>
-              </div>
-
-              <div class="info-card">
-                <div class="text-product">
-                  <a href="#gothspooky/src/views/products/detail.ejs">
-                    <h3>Lorem Lorem ipsum</h3>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <div class="product-button" style="text-align: center;">
+          <a href="/admin" class="btn-continue" style="background-color: #333; color: white; padding: 10px; text-decoration: none;">Continuar</a>
+        </div>
       </div>
     </main>
     <%- include('../partials/footer') %>
