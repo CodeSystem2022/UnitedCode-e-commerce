@@ -73,11 +73,11 @@ mercadopago.configure({
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-//app.use(express.static(path.join(__dirname, "../public")));
+app.use(express.static(path.join(__dirname, "../public")));
 app.use(cors());
 
 app.get("/", function () {
-	path.resolve(__dirname, "..", "src", "views", "partials", "head.ejs");
+	path.resolve(__dirname, "..", "public", "cart.ejs");
 });
 
 app.post("/create_preference", (req, res) => {
@@ -91,18 +91,18 @@ app.post("/create_preference", (req, res) => {
 			}
 		],
 		back_urls: {
-			"success": "http://localhost:3000/feedback",
-			"failure": "http://localhost:3000",
-			"pending": "",
+			success: "http://localhost:3000",
+			failure: "http://localhost:3000",
+			pending: "",
 		},
 		auto_return: "approved",
 	};
 
 	mercadopago.preferences
-    .create(preference)
+		.create(preference)
 		.then(function (response) {
 			res.json({
-				id: response.body.id
+				id: response.body.id,
 			});
 		}).catch(function (error) {
 			console.log(error);

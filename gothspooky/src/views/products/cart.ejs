@@ -4,6 +4,8 @@
 <head>
   <%- include('../partials/head') %> <%- include('../partials/header') %>
       <title>Carrito</title>
+      <script src="https://sdk.mercadopago.com/js/v2"></script>
+
 </head>
 
 <body>
@@ -48,19 +50,26 @@
                 required />
             </p>
             <p class="envio"><input type="checkbox" required />Envio</p>
+            
+            
           </form>
+          <button class="btn-primary" id="checkout-btn">Checkout</button>
+          <div id="button-checkout"></div>
+          
         </div>
-        <div class="btnpagar">
-          <div id="total"></div>
-          <button>Pagar</button>
-        </div>
+        
       </div>
+      
     </div>
-    <script src="js/products.js"></script>
-    <script src="js/cart.js"></script>
-    <img src="/gothspooky/public/images/products/producto1.jpg" alt="" />
-  </main>
+     
+<!--       <script src="index.js"></script>
+ --> 
 
+
+
+  </main>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
   <%- include('../partials/footer') %>
 </body>
 
