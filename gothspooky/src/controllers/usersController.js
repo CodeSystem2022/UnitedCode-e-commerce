@@ -20,7 +20,7 @@ const controller = {
             imagen: "no-image.png" //de momento imagen estática
         })
         .then(() => {
-            res.send("Usuario creado exitosamente. Renderizar vista login y enviar el email para usarlo desde el html");
+            res.send("Usuario creado exitosamente.");
         })
         .catch(error => {
             res.send("Error al crear usuario");
