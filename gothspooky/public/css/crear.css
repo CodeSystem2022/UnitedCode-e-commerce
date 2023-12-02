@@ -4,17 +4,25 @@ main.crear section.product_container {
 }
 
 main.crear section.product_container h1{
-    color: var(--black);
+    color: var(--white);
     width: 100%;
-    margin: 10px;
+    margin: 0 auto;
+    padding: 30px 20px;
     text-align: center;
+    background-color: var(--color1);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    display: block;
+    max-width: 400px;
+    margin-top: 20px;
+    margin-bottom: -30px;
+    
 }
-/* //////////contenedor segundario///////// */
+/* //////////contenedor secundario///////// */
 main.crear section.product_container form.todo_container {
     background-color: var(--black);
     max-width: 400px;
-    margin: 30px auto 20px auto;
-    border-radius: 5px 5px 0px 0px;
+    margin: 10px auto 20px auto;
 }
 
 /* //////////////estilo a todas las "P" ///////////// */
@@ -24,6 +32,7 @@ main.crear section.product_container form.todo_container p {
     font-weight: 600;
     text-align: center;
     font-size: 15px;
+    margin-top: 10px;
 }
 
 main.crear section.product_container form section.visual_container{
@@ -31,6 +40,7 @@ main.crear section.product_container form section.visual_container{
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 main.crear section.product_container form section.visual_container input {
@@ -41,7 +51,7 @@ main.crear section.product_container form section.info_container {
     display: flex;
     flex-direction: column;
     align-items: center; 
-    margin: 20px;
+    margin: 10px;
 }
 
 /* //////Estilo de Categoria////// */
@@ -103,6 +113,7 @@ main.crear section.product_container form.todo_container section.button_containe
     cursor: pointer;
     color: var(--white);
     font-weight: 600;
+    margin-top: 20px;
 }
 
 main.crear section.product_container form.todo_container section.button_container button.botonCrear {
@@ -144,7 +155,7 @@ main.crear form.todo_container div.editCategorias {
     flex-flow: nowrap row;
     height: 20px;
     justify-content: space-around;
-    margin-bottom: 5px;
+    margin-bottom: 30px;
 }
 
 main.crear form.todo_container div.editCategorias label {

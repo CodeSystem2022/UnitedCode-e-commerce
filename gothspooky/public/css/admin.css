@@ -1,204 +1,92 @@
-.admin h1.tittle {
-    margin: 20px 0px 20px 0px;
+/* Estilos específicos para la vista de administrador */
+.admin {
+    font-family: Arial, sans-serif;
+    background-color: var(--white);;
+    margin: 0;
+    padding: 0;
+}
+
+.admin h1.tittle, .admin h2.title_container {
     text-align: center;
-    color: var(--white);
-}
-
-.admin h2.title_container {
-    color: var(--white);
-    background-color: var(--lightBlue);
-    text-align: center;
-    padding: 5px;
-}
-
-.admin p.redirect_container {
-    margin: 15px 0px 15px 20px;
-}
-
-.admin p.redirect_container2 {
-    background-color: var(--white);
-    margin-bottom: 15px;
-    text-align: center;
-    padding: 5px;
-}
-
-.admin p.redirect_container2 a {
-    color: black;
-}
-
-.admin p.redirect_container a.redirect {
-    color: var(--white);
-}
-
-.admin section.list_container {
-    display: flex;
-    background-color: var(--white)
-}
-
-.admin section.list_container div.subtitulo_container {
-    color: var(--black);
+    color: var(--white); /* Color de texto principal */
+    background-color: var(--black); /* Color de fondo */
+    padding: 15px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    margin: 0px auto;
+    display: block;
     width: 50%;
 }
 
-.admin section.list_container div.subtitulo_container h2 {
-    padding-left: 10px;
-    color: var(--black);
-}
-
-.admin section.list_container form {
+.admin .list_container {
+    color: var(--white); /* Color de texto principal */
+    background-color: var(--color1); /* Color de fondo */
     display: flex;
+    flex-direction: column;
     align-items: center;
+    margin: 0px auto;
     width: 50%;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
-.admin section.list_container form.ban_container {
-    justify-content: space-around;
+.admin .table {
+    width: 50%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
-.admin section.list_container form.ban_container button.eliminar_usuarios {
-    border-radius: 5px;
-    padding: 3px;
-    font-size: 12px;
+/* Cambiar el fondo y color del icono al pasar el cursor */
+.admin .table .delete {
+    transition: background-color 0.3s, color 0.3s; /* Agregar transición para un cambio suave */
+    background-color: transparent; /* Fondo inicial */
+    color: black; /* Color del icono inicial */
+    font-size: 20px;
 }
 
-.admin section.list_container form input {
-    border: solid 1px var(--lightBlue);
-    width: 80%;
-    height: 26px;
-    border-radius: 5px 0 0 5px;
-    padding-left: 5px;
-    max-width: 300px;
+.admin .table .delete:hover {
+    background-color: red; /* Cambiar el fondo al pasar el cursor */
+    color: white; /* Cambiar el color del icono al pasar el cursor */
 }
 
-.admin section.list_container form button {
-    height: 26px;
-    border-radius: 0 5px 5px 0;
-    background-color: var(--lightBlue);
-    border: none;
-}
-
-.admin section.list_container form button i {
-    color: var(--white);
-    padding: 5px;
-    border-radius: 0px 5px 5px 0px;
-    align-self: center;
-}
-
-.admin table.table {
-    background-color: var(--white);
-    width: 100%;
-    border: 1px solid #ebebeb;
-    border-bottom: none;
-}
-
-.admin table.table thead tr th {
-    border-bottom: 1px solid #ebebeb;
-    padding: 5px;
-}
-
-.admin table.table tbody tr td, .admin table.table tbody tr th.id {
-    border-bottom: 1px solid #ebebeb;
-}
-
-.admin table.table tbody tr td.iconos, .admin table.table tbody tr th, .admin table.table tbody tr td.adm {
+.admin .table th, .admin .table td {
+    border: 1px solid #ccc;
+    padding: 10px;
     text-align: center;
 }
 
-.admin table.table tbody tr td.iconos {
-    padding: 5px 0px 5px 0px;
+.admin .table th {
+    background-color: #f2f2f2; /* Fondo para encabezados */
 }
 
-.admin table.table tbody tr td.iconos a i {
-    color: var(--lightBlue);
+.admin .table tbody tr:nth-child(odd) {
+    background-color: #e9e9e9; /* Fondo para filas impares */
 }
 
-.admin table.table tbody tr td.iconos a i.trash, .admin table.table tbody tr td.iconos form button.ban i.ban {
-    color: crimson;
-}
-
-.admin table.table tbody tr td.iconos a i.trash, .admin table.table tbody tr td.iconos form button.ban {
-    border: none;
-    cursor: pointer;
-
-}
-
-.admin table.table tbody tr td.iconos form button.ban i.noban, .admin table.table tbody tr td.iconos i.carta {
-    color: var(--lightBlue);
-    cursor: pointer;
-}
-
-.admin table.table tbody tr td.iconos form button.delete {
-    color: crimson;
-    border: none;
+.admin .redirect_container a, .admin .redirect_container2 a {
+    text-decoration: none;
+    color: #fff; /* Color de texto para botones/enlaces */
+    background-color: var(--black);
+    padding: 8px 15px;
     border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
+    margin: 10px auto;
+    display: block;
+    width: fit-content;
 }
 
-.admin table.table tbody tr td.nick {
-    font-size: 13px;
+.admin .redirect_container a:hover, .admin .redirect_container2 a:hover {
+    background-color: var(--color1); /* Cambio de color al pasar el cursor */
 }
 
-@media (min-width: 425px) {
-
-    .admin section.list_container div.subtitulo_container h2 {
-        padding: 10px;
-    }
-
-    .admin section.list_container form.ban_container button.eliminar_usuarios {
-        border-radius: 5px;
-        padding: 5px;
-        font-size: 15px;
-    }
-
-    .admin section.tarjetas_container article.tarjetas div.cogs_container {
-        width: 185px;
-        top: -170px;
-        left: 8px;
-    }
-
-    .admin table.table tbody tr td.nick {
-        font-size: 16px;
-    }
-
-}
-
+/* Media Queries para pantallas más grandes */
 @media (min-width: 768px) {
-
-    .admin h1.tittle {
-        text-align: start;
-        margin-left: 20px;
+    .admin .list_container {
+        flex-direction: row;
+        justify-content: space-around;
     }
-    
-    .admin p.redirect_container a.redirect:hover {
-        text-shadow: 1px 1px 2px var(--white), 0 0 1em var(--lightBlue), 0 0 0.2em var(--lightBlue);
+    .admin .table {
+        width: 45%;
     }
-
-    .admin p.redirect_container2 a.redirect:hover {
-        text-shadow: 1px 1px 2px var(--white), 0 0 1em var(--lightBlue), 0 0 0.2em var(--lightBlue);
-    }
-
-    .admin section.list_container form {
-        justify-content: flex-end;
-        margin-right: 20px;
-    }
-
-    .admin table.table tbody tr td.name, .admin table.table thead tr th.name {
-        display: block;
-        padding: 5px 0px 5px 0px;
-    }
-
-    .admin table.table thead tr th.colm_icon {
-        width: 100px;
-    }
-
-    .admin table.table thead tr th.colm_admin {
-        width: 120px;
-    }
-
-    .admin table.table tbody tr td i:hover{
-        transform: scale(1.5);
-        transition: all .5s;
-    }
-
+    /* Otras modificaciones para una mejor visualización en pantallas más grandes */
 }

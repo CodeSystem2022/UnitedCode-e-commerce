@@ -58,6 +58,75 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+//Codigo Mercadopago (server)
+
+const cors = require("cors");
+const mercadopago = require("mercadopago");
+//const path = require("path")
+
+// REPLACE WITH YOUR ACCESS TOKEN AVAILABLE IN: https://developers.mercadopago.com/panel
+mercadopago.configure({
+	access_token: "<TEST-261158773593273-103119-ea6e4a453934f999e1211ab23e6b70af-215234977>",
+});
+
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+app.use(express.static(path.join(__dirname, "../public")));
+app.use(cors());
+
+app.get("/", function () {
+	path.resolve(__dirname, "..", "public", "cart.ejs");
+});
+
+app.post("/create_preference", (req, res) => {
+
+	let preference = {
+		items: [
+			{
+				title: req.body.description,
+				unit_price: Number(req.body.price),
+				quantity: Number(req.body.quantity),
+			}
+		],
+		back_urls: {
+			success: "http://localhost:3000",
+			failure: "http://localhost:3000",
+			pending: "",
+		},
+		auto_return: "approved",
+	};
+
+	mercadopago.preferences
+		.create(preference)
+		.then(function (response) {
+			res.json({
+				id: response.body.id,
+			});
+		}).catch(function (error) {
+			console.log(error);
+		});
+});
+
+app.get('/feedback', function (req, res) {
+	res.json({
+		Payment: req.query.payment_id,
+		Status: req.query.status,
+		MerchantOrder: req.query.merchant_order_id
+	});
+});
+
+
+
+function onListening() {
+  const addr = server.address();
+  const bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+
+}
 
 
 
