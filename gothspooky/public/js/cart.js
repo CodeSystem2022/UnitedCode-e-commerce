@@ -1,11 +1,13 @@
 window.addEventListener('load', () => {
-  console.log('Se lanzo');
+  //console.log('Se lanzo');
   const qs = (tag) => {
     return document.querySelector(tag)
   }
+  
+  const checkoutButton = qs("#checkout-btn");
 
   const vistaProductos = document.getElementById("vistaProductos");
-  const preciototal = document.getElementById("total");
+  const preciototal = document.getElementById("total"); //Donde está esto?
   let total = 0;
 
   productos.forEach((product) => {
@@ -49,7 +51,8 @@ window.addEventListener('load', () => {
 
   const totalElementos = document.createElement("div");
   totalElementos.innerHTML = `<h3>Total: $ ${total}</h3>`;
-  preciototal.append(totalElementos);
+  //preciototal.append(totalElementos);
+  //preciototal su valor es nulo por lo tanto va a dar error, no existe un elemento en el html que tenga el id de "total"
 
   if (total === 0) {
     vistaProductos.innerHTML = `<h3>Tu carrito se encuentra vacío</h3>`;
@@ -60,10 +63,9 @@ window.addEventListener('load', () => {
   const mercadopago = new MercadoPago("TEST-fa7caf53-ca8d-462e-952e-8b2331e6cf31", {
   locale: "es-AR", 
   });
-
-  const checkoutButton = document.querySelector("checkout-btn");
       
-  checkoutButton.addEventListener("click", function() {
+  checkoutButton.addEventListener("click", () => {
+    console.log('click');
     const condicion = true;
     if (condicion) {
       console.log("funciona?");
