@@ -1,13 +1,14 @@
 window.addEventListener('load', () => {
   //console.log('Se lanzo');
+
   const qs = (tag) => {
     return document.querySelector(tag)
   }
   
   const checkoutButton = qs("#checkout-btn");
+  const preciototal = qs("#total");
 
   const vistaProductos = document.getElementById("vistaProductos");
-  const preciototal = document.getElementById("total"); //Donde está esto?
   let total = 0;
 
   productos.forEach((product) => {
@@ -34,7 +35,7 @@ window.addEventListener('load', () => {
     vistaProductos.append(content);
     
 
-
+  
     const removeButton = content.querySelector(".remove-product");
     removeButton.addEventListener("click", () => {
       content.remove();
@@ -47,33 +48,23 @@ window.addEventListener('load', () => {
     });
 
     total += product.price;
-  
+
+  });
 
   const totalElementos = document.createElement("div");
   totalElementos.innerHTML = `<h3>Total: $ ${total}</h3>`;
-  //preciototal.append(totalElementos);
-  //preciototal su valor es nulo por lo tanto va a dar error, no existe un elemento en el html que tenga el id de "total"
+  preciototal.append(totalElementos);
 
   if (total === 0) {
     vistaProductos.innerHTML = `<h3>Tu carrito se encuentra vacío</h3>`;
   }
-        
-      
   //mp
-  const mercadopago = new MercadoPago("TEST-fa7caf53-ca8d-462e-952e-8b2331e6cf31", {
+  const mercadopago = new MercadoPago("TEST-a14a7b12-fae3-4fd2-8865-f2a7ae01b5ac", {
   locale: "es-AR", 
   });
       
   checkoutButton.addEventListener("click", () => {
-    console.log('click');
-    const condicion = true;
-    if (condicion) {
-      console.log("funciona?");
-    } else {
-      console.log("no funciona")
-    };
-       
-  
+    //console.log('click');
     checkoutButton.remove();
 
     const orderData = {
@@ -82,8 +73,9 @@ window.addEventListener('load', () => {
         price: total,
         };
 
-    fetch("http://localhost:3000/create_preference",{
+    fetch("http://localhost:3000/api/create_preference",{
           method: "POST",
+          mode: "cors",
           headers: {
             "Content-Type": "application/json",
           },
@@ -125,10 +117,6 @@ window.addEventListener('load', () => {
     
     };
 
-  });
 
 });
 
-
-
-    

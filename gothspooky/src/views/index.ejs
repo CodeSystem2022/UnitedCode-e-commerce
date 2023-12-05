@@ -41,7 +41,7 @@
       <div class="contenedor">
         <% ofertas.forEach((producto) => { %>
             <div class="columna tarjeta">
-              <img src="images/products/<%= producto.imagen ? producto.imagen[0].nombre : "images/products/no-image-icon.png" %>" alt="<%= producto.nombre %>">
+              <img src="images/products/<%= producto.imagen[0].nombre ? producto.imagen[0].nombre : "images/products/no-image-icon.jpg" %>" alt="<%= producto.nombre %>">
               <div class="producto-detalles">
                 <h3><%= producto.nombre %></h3>
                 <p><%= producto.precio %></p>
