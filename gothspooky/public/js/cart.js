@@ -59,7 +59,7 @@ window.addEventListener('load', () => {
     vistaProductos.innerHTML = `<h3>Tu carrito se encuentra vacío</h3>`;
   }
   //mp
-  const mercadopago = new MercadoPago("TEST-a14a7b12-fae3-4fd2-8865-f2a7ae01b5ac", {
+  const mercadopago = new MercadoPago("TEST-fa7caf53-ca8d-462e-952e-8b2331e6cf31", {
   locale: "es-AR", 
   });
       
