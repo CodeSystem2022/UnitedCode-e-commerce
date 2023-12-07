@@ -1,67 +1,109 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <%- include('../partials/head') %> <%- include('../partials/header') %>
+    <!-- <script src="../../../js/inicio.js"></script> -->
+    <!-- <script src="../../../../js/products.js"></script> -->
+    
+    <!-- <script src="../../../../js/inicio.js"></script> -->
+    <title>Carrito</title>
+  </head>
 
-<head>
-  <%- include('../partials/head') %> <%- include('../partials/header') %>
-      <title>Carrito</title>
-</head>
-
-<body>
-  <main class="carrito">
-    <div class="container">
-      <h1 class="title">Carrito</h1>
-    </div>
-    <div class="container2">
-      <div class="primerlinea">
-        <h2>Articulo</h2>
-        <h2>Precio</h2>
+  <body>
+    <main class="carrito">
+      <div class="container">
+        <h1 class="title">Carrito</h1>
       </div>
-      <div class="title2"></div>
-      <div>
-        <div class="vistaProductos" id="vistaProductos"></div>
-      </div>
-
-      <div class="formulario">
-        <div class="form">
-          <h2>Formulario de Compra</h2>
-          <form action="">
-            <p>
-              <input type="text" placeholder="Nombre" id="nombre" name="nombre" required />
-            </p>
-            <p>
-              <input type="text" placeholder="Apellido" id="apellido" name="apellido" required />
-            </p>
-            <p>
-              <input type="email" placeholder="Ingrese su email" id="email" name="email" required />
-            </p>
-            <p>
-              <input type="tel" placeholder="Ingrese su telefono" id="telefono" name="telefono" required />
-            </p>
-            <p>
-              <input type="text" placeholder="Ingrese su DNI" id="dni" name="dni" required />
-            </p>
-            <p>
-              <input type="text" placeholder="Ingrese su domicilio" id="domicilio" name="domicilio" required />
-            </p>
-            <p>
-              <input type="text" placeholder="Ingrese su codigo postal" id="codigopostal" name="codigopostal"
-                required />
-            </p>
-            <p class="envio"><input type="checkbox" required />Envio</p>
-          </form>
+      <div class="container2">
+        <div class="primerlinea">
+          <h2>Articulo</h2>
+          <h2>Precio</h2>
         </div>
-        <div class="btnpagar">
-          <div id="total"></div>
-          <button>Pagar</button>
+        <div class="title2"></div>
+        <div>
+          <!-- <div class="vistaProductos" id="vistaProductos"></div> -->
+        </div>
+        <section id="vistaProductos"></section>
+        <div class="formulario">
+          <div class="form">
+            <h2>Formulario de Compra</h2>
+            <form action="">
+              <p>
+                <input
+                  type="text"
+                  placeholder="Nombre"
+                  id="nombre"
+                  name="nombre"
+                  required
+                />
+              </p>
+              <p>
+                <input
+                  type="text"
+                  placeholder="Apellido"
+                  id="apellido"
+                  name="apellido"
+                  required
+                />
+              </p>
+              <p>
+                <input
+                  type="email"
+                  placeholder="Ingrese su email"
+                  id="email"
+                  name="email"
+                  required
+                />
+              </p>
+              <p>
+                <input
+                  type="tel"
+                  placeholder="Ingrese su telefono"
+                  id="telefono"
+                  name="telefono"
+                  required
+                />
+              </p>
+              <p>
+                <input
+                  type="text"
+                  placeholder="Ingrese su DNI"
+                  id="dni"
+                  name="dni"
+                  required
+                />
+              </p>
+              <p>
+                <input
+                  type="text"
+                  placeholder="Ingrese su domicilio"
+                  id="domicilio"
+                  name="domicilio"
+                  required
+                />
+              </p>
+              <p>
+                <input
+                  type="text"
+                  placeholder="Ingrese su codigo postal"
+                  id="codigopostal"
+                  name="codigopostal"
+                  required
+                />
+              </p>
+              <p class="envio"><input type="checkbox" required />Envio</p>
+            </form>
+          </div>
+          <div class="btnpagar">
+            <div id="total"></div>
+            <button>Pagar</button>
+          </div>
         </div>
       </div>
-    </div>
-    <script src="js/products.js"></script>
-    <script src="js/cart.js"></script>
-    <img src="/gothspooky/public/images/products/producto1.jpg" alt="" />
-  </main>
+      <div id="probando"></div>
+    </main>
 
-  <%- include('../partials/footer') %>
-</body>
-
+    <%- include('../partials/footer') %>
+    <script src="../../../../js/cart.js"></script>
+  </body>
 </html>
