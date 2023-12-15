@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Carrito extends Model {
     /**
@@ -13,23 +11,26 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Carrito.belongsTo(models.Usuario, {
         as: "carritoUsuario",
-        foreignKey: "usuarioId"
+        foreignKey: "usuarioId",
       });
 
       Carrito.belongsTo(models.Producto, {
         as: "carritoProducto",
-        foreignKey: "productoId"
+        foreignKey: "productoId",
       });
     }
   }
-  Carrito.init({
-    usuarioId: DataTypes.INTEGER,
-    productoId: DataTypes.INTEGER,
-    cantidad: DataTypes.INTEGER
-  }, {
-    sequelize,
-    tableName: 'carritos',
-    modelName: 'Carrito',
-  });
+  Carrito.init(
+    {
+      usuarioId: DataTypes.INTEGER,
+      productoId: DataTypes.INTEGER,
+      cantidad: DataTypes.INTEGER,
+    },
+    {
+      sequelize,
+      tableName: "carritos",
+      modelName: "Carrito",
+    }
+  );
   return Carrito;
 };

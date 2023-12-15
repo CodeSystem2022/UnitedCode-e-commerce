@@ -39,12 +39,23 @@
       <img class="linea" src="images/design/barra.png" alt=""> -->
       <!-- Ofertas-->
       <div class="contenedor">
+<<<<<<< Updated upstream
           <div class="columna tarjeta">
             <img src="images/products/producto1.jpg" alt="Mariposa1">
             <div class="producto-detalles">
                 <h3>Producto 1</h3>
                 <p>Precio: $19.99</p>
                 <button class="buttonroducto-detalles producto-agregar">AGREGAR</p>
+=======
+        <% ofertas.forEach((producto) => { %>
+            <div class="columna tarjeta">
+              <img src="images/products/<%= producto.imagen[0].nombre ? producto.imagen[0].nombre : "images/products/no-image-icon.jpg" %>" alt="<%= producto.nombre %>">
+             
+                <h3><%= producto.nombre %></h3>
+                <p><%= producto.precio %></p>
+                <button class="buttonproducto-detalles producto-agregar">AGREGAR</p>
+              
+>>>>>>> Stashed changes
             </div>
         </div>
           <div class="columna tarjeta">
@@ -118,6 +129,7 @@
 
       <!-- NUEVOS INGRESOS-->
       <div class="contenedor">
+<<<<<<< Updated upstream
         <div class="columna tarjeta">
           <img src="images/products/producto1.jpg" alt="Mariposa1">
           <div class="producto-detalles">
@@ -141,6 +153,18 @@
                 <p>Precio: $19.99</p>
                 <button class="buttonroducto-detalles producto-agregar">AGREGAR</p>
             </div>
+=======
+        <% ofertas.forEach((producto) => { %>
+          <div class="columna tarjeta">
+            <img src="images/products/<%= producto.imagen ? producto.imagen[0].nombre : "images/products/no-image-icon.png" %>" alt="<%= producto.nombre %>">
+            
+              <h3><%= producto.nombre %></h3>
+              <p><%= producto.precio %></p>
+              <button class="buttonproducto-detalles producto-agregar">AGREGAR</p>
+            
+          </div>
+        <% }) %>
+>>>>>>> Stashed changes
       </div>
       
     
@@ -188,6 +212,9 @@
     </div>
   </div>
   <br>
+</div>
+<div id="probando"></div>
+</div>
 </main>
            
    <!-- </main>-->

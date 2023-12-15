@@ -1,7 +1,15 @@
+<<<<<<< Updated upstream
 const botonComprar = document.querySelectorAll(".buttonroducto-detalles");
 const carrito = [];
 const vistageneral = document.getElementById("probando")
 console.log(botonComprar);
+=======
+const botonComprar = document.querySelectorAll(".buttonproducto-detalles");
+const carrito = [];
+const vistageneral = document.getElementById("probando")
+console.log(botonComprar);
+
+>>>>>>> Stashed changes
 
 //Carrusel
 let sliderInner = document.querySelector(".slider--inner");
@@ -30,6 +38,7 @@ botonComprar.forEach((boton) => {
     });
     console.log(carrito);
     
+<<<<<<< Updated upstream
     carrito.forEach((products) => {
     const content = document.createElement("div");
     
@@ -57,3 +66,46 @@ botonComprar.forEach((boton) => {
 });
 
 
+=======
+},2000)
+
+botonComprar.forEach((boton) => {
+    boton.addEventListener("click", (e) => {
+      const producto = e.target.parentElement;
+      //console.log(e.target.parentElement);
+      vistageneral.innerHTML = ""
+      carrito.push({
+        quantity: 1,
+        title: producto.querySelector("h3").textContent,
+        price: producto.querySelector("p").textContent,
+        imagen: producto.querySelector("img"),
+      });
+      console.log(carrito);
+      
+      carrito.forEach((products) => {
+      const content = document.createElement("div");
+      
+      content.innerHTML = `
+        <div>
+        <img> $ ${products.imagen} </img>
+            <div class="product-info">      
+                <h4>${products.title}</h4>
+            </div>
+            <div class="price">
+                <h4> $ ${products.price} </h4>
+            </div>
+        </div>
+        <hr>
+        `;
+      vistageneral.append(content);
+      saveLocal();
+  })
+    });
+  
+    const saveLocal = () => {
+      localStorage.setItem("carrito",JSON.stringify(carrito))
+    };
+    
+    
+  });
+>>>>>>> Stashed changes
