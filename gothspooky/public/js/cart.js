@@ -2,7 +2,7 @@ const vistaProductos = document.getElementById("vistaProductos");
 const totalElement = document.getElementById("total");
 
 function tarjetaCarrito() {
-  let sumar = 0;
+  let total = 0;
   const prendas = JSON.parse(localStorage.getItem("carrito"));
   console.log(prendas);
 
@@ -20,21 +20,26 @@ function tarjetaCarrito() {
     `;
     vistaProductos.append(nuevaPrenda);
 
-    // Sumar el precio numérico
-    sumar += precioNumerico;
+    // total el precio numérico
+    total += precioNumerico;
   });
 
   // Mostrar el total
-  totalElement.textContent = `Total: $${sumar.toFixed(2)}`;
+  if (total === 0) {
+    vistaProductos.innerHTML = `<h3>Tu carrito se encuentra vacío</h3>`;
+  }else{
+
+    totalElement.textContent = `Total: $${total.toFixed(2)}`;
+  }
 }
 
 function eliminarPrenda(index, precio) {
   const prendas = JSON.parse(localStorage.getItem("carrito"));
 
   // Restar el precio al total
-  let sumar = parseFloat(totalElement.textContent.replace('Total: $', ''));
-  sumar -= precio;
-  totalElement.textContent = `Total: $${sumar.toFixed(2)}`;
+  let total = parseFloat(totalElement.textContent.replace('Total: $', ''));
+  total -= precio;
+  totalElement.textContent = `Total: $${total.toFixed(2)}`;
 
   // Eliminar la prenda del carrito
   prendas.splice(index, 1);
@@ -52,7 +57,7 @@ tarjetaCarrito();
 // const vistaProductos = document.getElementById("vistaProductos");
 
 // function tarjetaCarrito() {
-//   let sumar = 0;
+//   let total = 0;
 //   const prendas = JSON.parse(localStorage.getItem("carrito"));
 //   //console.log(prendas);
 //   prendas.forEach((element) => {
@@ -65,9 +70,9 @@ tarjetaCarrito();
 //       <h4>${element.price}</h4>
 //     `;
 //     vistaProductos.append(nuevaPrenda);
-//     sumar += precioNumerico;
+//     total += precioNumerico;
 //   });
-//   console.log(sumar)
+//   console.log(total)
 // }
 
 // tarjetaCarrito();
