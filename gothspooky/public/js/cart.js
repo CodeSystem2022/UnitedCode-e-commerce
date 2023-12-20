@@ -8,7 +8,7 @@ function tarjetaCarrito() {
 
   prendas.forEach((element, index) => {
     // Eliminar el símbolo "$" del precio y convertir a número
-    const precioNumerico = parseFloat(element.price.replace('$', ''));
+    const precioNumerico = parseFloat(element.price.replace("$", ""));
 
     const nuevaPrenda = document.createElement("div");
     nuevaPrenda.classList = "prenda-carrito";
@@ -27,8 +27,7 @@ function tarjetaCarrito() {
   // Mostrar el total
   if (total === 0) {
     vistaProductos.innerHTML = `<h3>Tu carrito se encuentra vacío</h3>`;
-  }else{
-
+  } else {
     totalElement.textContent = `Total: $${total.toFixed(2)}`;
   }
 }
@@ -37,7 +36,7 @@ function eliminarPrenda(index, precio) {
   const prendas = JSON.parse(localStorage.getItem("carrito"));
 
   // Restar el precio al total
-  let total = parseFloat(totalElement.textContent.replace('Total: $', ''));
+  let total = parseFloat(totalElement.textContent.replace("Total: $", ""));
   total -= precio;
   totalElement.textContent = `Total: $${total.toFixed(2)}`;
 
@@ -51,8 +50,6 @@ function eliminarPrenda(index, precio) {
 }
 
 tarjetaCarrito();
-
-
 
 // const vistaProductos = document.getElementById("vistaProductos");
 
