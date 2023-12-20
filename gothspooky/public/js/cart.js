@@ -38,7 +38,11 @@ function eliminarPrenda(index, precio) {
   // Restar el precio al total
   let total = parseFloat(totalElement.textContent.replace("Total: $", ""));
   total -= precio;
-  totalElement.textContent = `Total: $${total.toFixed(2)}`;
+  if (total === 0) {
+    totalElement.textContent = ``;
+  } else {
+    totalElement.textContent = `Total: $${total.toFixed(2)}`;
+  }
 
   // Eliminar la prenda del carrito
   prendas.splice(index, 1);
