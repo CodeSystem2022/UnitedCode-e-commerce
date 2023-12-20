@@ -74,13 +74,13 @@ body {
 }
 
 .cart-counter {
-    display: none;
+    /* display: none; */
     position: static;
     top: 89vh;
     right: 27px;
     color:#fff;
     text-align: center;
-    background-color: #ed3434;
+    background-color: #641b1b;
     padding: 4px;
     border-radius: 50%;
     height: 17px;
