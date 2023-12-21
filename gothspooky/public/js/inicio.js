@@ -1,5 +1,4 @@
 const botonComprar = document.querySelectorAll(".producto-agregar");
-console.log(botonComprar);
 const carrito = [];
 
 //Carrusel

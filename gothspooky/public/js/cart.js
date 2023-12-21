@@ -54,27 +54,3 @@ function eliminarPrenda(index, precio) {
 }
 
 tarjetaCarrito();
-
-// const vistaProductos = document.getElementById("vistaProductos");
-
-// function tarjetaCarrito() {
-//   let total = 0;
-//   const prendas = JSON.parse(localStorage.getItem("carrito"));
-//   //console.log(prendas);
-//   prendas.forEach((element) => {
-//     const precioNumerico = parseFloat(element.price.replace('$', ''));
-//     const nuevaPrenda = document.createElement("div");
-//     nuevaPrenda.classList = "prenda-carrito";
-//     nuevaPrenda.innerHTML = `
-//       <img src="${element.imagen}"/>
-//       <h4>${element.title}</h4>
-//       <h4>${element.price}</h4>
-//     `;
-//     vistaProductos.append(nuevaPrenda);
-//     total += precioNumerico;
-//   });
-//   console.log(total)
-// }
-
-// tarjetaCarrito();
-// contarCarrito();
