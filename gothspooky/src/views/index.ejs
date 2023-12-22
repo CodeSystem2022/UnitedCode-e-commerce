@@ -43,9 +43,10 @@
             <div class="columna tarjeta">
               <img src="images/products/<%= producto.imagen[0].nombre ? producto.imagen[0].nombre : "images/products/no-image-icon.jpg" %>" alt="<%= producto.nombre %>">
               <div class="producto-detalles">
+                <p class="idproducto" id="idproducto"><%= producto.id %></p>
                 <h3><%= producto.nombre %></h3>
                 <p><%= producto.precio %></p>
-                <button class="buttonroducto-detalles producto-agregar">AGREGAR</p>
+                <button class="buttonroducto-detalles producto-agregar" data-id="<%= producto.id %>">AGREGAR</p>
               </div>
             </div>
         <% }) %>
