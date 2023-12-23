@@ -1,10 +1,11 @@
 const mercadopago = require("mercadopago");
 require('dotenv').config();
+const db = require('../../database/models');
 
 // REPLACE WITH YOUR ACCESS TOKEN AVAILABLE IN: https://developers.mercadopago.com/panel
 //Token en .env
 mercadopago.configure({
-	access_token: process.env.ACCESS_TOKEN_MP,
+	access_token: "",
 });
 
 const controller = {
@@ -43,6 +44,19 @@ const controller = {
             Status: req.query.status,
             MerchantOrder: req.query.merchant_order_id
         });
+    },
+    prod: async (req,res) => {
+        db.Producto.findOne({
+            where: { id: req.params.id },
+            include: [
+                {
+                    association: "imagen",
+                },
+                {
+                    association: "categoria",
+                }
+            ],
+        })
     }
 };
 

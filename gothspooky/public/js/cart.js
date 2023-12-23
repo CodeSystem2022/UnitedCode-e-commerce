@@ -117,6 +117,18 @@ window.addEventListener('load', () => {
     
     };
 
+    if(localStorage.carrito) {
+      let carrito = JSON.parse(localStorage.carrito);
+      console.log(carrito);
+      carrito.forEach((item,index) => {
+        fetch(`/api/prod/:${item.id}`)
+          .then((res) => res.json())
+          .then((producto) => {
+            console.log(producto)
+          })
+      })
+    }
+
 
 });
 
