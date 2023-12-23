@@ -45,18 +45,31 @@ const controller = {
             MerchantOrder: req.query.merchant_order_id
         });
     },
-    prod: async (req,res) => {
-        db.Producto.findOne({
-            where: { id: req.params.id },
-            include: [
-                {
-                    association: "imagen",
-                },
-                {
-                    association: "categoria",
-                }
-            ],
-        })
+    prod: async (req, res) => {
+        try {
+            // Obtener el ID del producto desde los parámetros de la solicitud
+            const productId = req.params.id;
+
+            // Buscar el producto en la base de datos utilizando Sequelize
+            const producto = await db.Producto.findByPk(productId, {
+                include: [
+                    { model: db.Imagen,
+                        as: "imagen" 
+                    }
+                ]
+            });
+
+            // Verificar si el producto existe
+            if (!producto) {
+                return res.status(404).json({ error: 'Producto no encontrado' });
+            }
+
+            // Enviar el producto como respuesta
+            res.json(producto);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Error interno del servidor' });
+        }
     }
 };
 
