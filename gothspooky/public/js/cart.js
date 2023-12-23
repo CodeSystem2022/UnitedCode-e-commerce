@@ -72,6 +72,26 @@ window.addEventListener("load", () => {
 const vistaProductos = document.getElementById("vistaProductos");
 const vistatotal = document.getElementById("total");
 let total = 0;
+let productos = [];
+
+const calcularTotal = (producto) => {
+  return producto.reduce(
+    (acum, producto) => (acum += producto.precio * producto.cantidad),
+    0
+  );
+};
+
+function actualizarCarrito() {
+  localStorage.setItem("carrito", JSON.stringify(productos));
+  total = calcularTotal(productos);
+  if (total === 0) {
+    document.querySelector(
+      ".totalAmount"
+    ).innerText = `Tu carrito se encuentra vacío`;
+  } else {
+    document.querySelector(".totalAmount").innerText = `Total: $${total}`;
+  }
+}
 
 if (localStorage.carrito) {
   let carrito = JSON.parse(localStorage.carrito);
@@ -81,32 +101,50 @@ if (localStorage.carrito) {
     fetch(`/api/prod/${item.id}`)
       .then((res) => res.json())
       .then((producto) => {
-        const content = document.createElement("div");
-        content.innerHTML = `
-          <div class="product">
-            <img src="/images/products/${producto.imagen[0].nombre}" alt="${
-          producto.nombre
-        }">
-            <button class="remove-product">Eliminar</button>
-            <div class="product-info">      
-              <h4>${producto.nombre}</h4>
+        if (producto) {
+          const content = document.createElement("div");
+          content.innerHTML = `
+            <div class="product">
+              <img src="/images/products/${producto.imagen[0].nombre}" alt="${
+            producto.nombre
+          }">
+              <button class="remove-product">Eliminar</button>
+              <div class="product-info">      
+                <h4>${producto.nombre}</h4>
+              </div>
+              <div class="price">
+                <h4> $ ${producto.precio} </h4>
+                <h4>${item.cantidad} </h4>
+                <h4>${parseFloat(producto.precio * item.cantidad, 2).toFixed(
+                  2
+                )} </h4>
+              </div>
             </div>
-            <div class="price">
-              <h4> $ ${producto.precio} </h4>
-              <h4>${item.cantidad} </h4>
-              <h4>${parseFloat(producto.precio * item.cantidad, 2).toFixed(
-                2
-              )} </h4>
-            </div>
-          </div>
-        `;
+          `;
+          productos.push({
+            produId: producto.id,
+            nombre: producto.nombre,
+            precio: producto.precio,
+            cantidad: item.cantidad,
+          });
 
-        vistaProductos.append(content);
+          vistaProductos.append(content);
 
-        const removeButton = content.querySelector(".remove-product");
-        removeButton.addEventListener("click", () => {
-          content.remove();
-        });
+          const removeButton = content.querySelector(".remove-product");
+          removeButton.addEventListener("click", () => {
+            const index = productos.findIndex((p) => p.produId === producto.id);
+            if (index !== -1) {
+              productos.splice(index, 1);
+              content.remove();
+              actualizarCarrito();
+              localStorage.setItem("carrito", JSON.stringify(productos));
+            }
+          });
+        }
+      })
+      .then(() => {
+        actualizarCarrito();
       });
   });
 }
+actualizarCarrito();
