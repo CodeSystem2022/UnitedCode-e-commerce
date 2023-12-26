@@ -71,8 +71,9 @@ window.addEventListener("load", () => {
 
 const vistaProductos = document.getElementById("vistaProductos");
 const vistatotal = document.getElementById("total");
+const count = document.querySelector(".cart-counter");
 let total = 0;
-let productos = [];
+let productosCarrito = [];
 
 const calcularTotal = (producto) => {
   return producto.reduce(
@@ -82,12 +83,9 @@ const calcularTotal = (producto) => {
 };
 
 function actualizarCarrito() {
-  localStorage.setItem("carrito", JSON.stringify(productos));
-  total = calcularTotal(productos);
+  total = calcularTotal(productosCarrito);
   if (total === 0) {
-    document.querySelector(
-      ".totalAmount"
-    ).innerText = `Tu carrito se encuentra vacío`;
+    document.querySelector(".totalAmount").innerText = `Tu carrito se encuentra vacío`;
   } else {
     document.querySelector(".totalAmount").innerText = `Total: $${total}`;
   }
@@ -105,39 +103,73 @@ if (localStorage.carrito) {
           const content = document.createElement("div");
           content.innerHTML = `
             <div class="product">
-              <img src="/images/products/${producto.imagen[0].nombre}" alt="${
-            producto.nombre
-          }">
-              <button class="remove-product">Eliminar</button>
+              <div class="tarjeta">
+                <img src="/images/products/${producto.imagen[0].nombre}" alt="${producto.nombre}">
+                <button class="remove-product">Eliminar</button>
+                <button class="decrement-product">-</button>
+                <button class="increment-product">+</button>
+              </div>
               <div class="product-info">      
                 <h4>${producto.nombre}</h4>
               </div>
               <div class="price">
-                <h4> $ ${producto.precio} </h4>
-                <h4>${item.cantidad} </h4>
-                <h4>${parseFloat(producto.precio * item.cantidad, 2).toFixed(
-                  2
-                )} </h4>
+                <h4>$ ${producto.precio} </h4>
+                <h4>Cantidad: <span class="product-quantity">${item.cantidad}</span></h4>
               </div>
             </div>
           `;
-          productos.push({
-            produId: producto.id,
+
+          productosCarrito.push({
+            id: producto.id,
             nombre: producto.nombre,
             precio: producto.precio,
             cantidad: item.cantidad,
           });
 
           vistaProductos.append(content);
+          const incrementButton = content.querySelector(".increment-product");
+          const decrementButton = content.querySelector(".decrement-product");
+          const quantityElement = content.querySelector(".product-quantity");
+
+          incrementButton.addEventListener("click", () => {
+            const index = productosCarrito.findIndex(
+              (p) => p.id === producto.id
+            );
+            if (index !== -1) {
+              productosCarrito[index].cantidad++;
+              quantityElement.innerText = productosCarrito[index].cantidad;
+              actualizarCarrito();
+              
+              count.innerText = productoEnElCarrito();
+              localStorage.setItem("carrito", JSON.stringify(productosCarrito));
+            }
+          });
+
+          decrementButton.addEventListener("click", () => {
+            const index = productosCarrito.findIndex(
+              (p) => p.id === producto.id
+            );
+            if (index !== -1 && productosCarrito[index].cantidad > 1) {
+              productosCarrito[index].cantidad--;
+              quantityElement.innerText = productosCarrito[index].cantidad;
+              actualizarCarrito();
+              
+              count.innerText = productoEnElCarrito();
+              localStorage.setItem("carrito", JSON.stringify(productosCarrito));
+            }
+          });
 
           const removeButton = content.querySelector(".remove-product");
           removeButton.addEventListener("click", () => {
-            const index = productos.findIndex((p) => p.produId === producto.id);
+            const index = productosCarrito.findIndex(
+              (p) => p.id === producto.id
+            );
             if (index !== -1) {
-              productos.splice(index, 1);
+              productosCarrito.splice(index, 1);
               content.remove();
               actualizarCarrito();
-              localStorage.setItem("carrito", JSON.stringify(productos));
+              localStorage.setItem("carrito", JSON.stringify(productosCarrito));
+              count.innerText = productoEnElCarrito();
             }
           });
         }
@@ -145,6 +177,18 @@ if (localStorage.carrito) {
       .then(() => {
         actualizarCarrito();
       });
+      const productoEnElCarrito = () => {
+        return localStorage.carrito
+          ? JSON.parse(localStorage.carrito).reduce(
+              (total, prod) => total + prod.cantidad,
+              0
+            )
+          : 0;
+      };
+      
+      
   });
 }
+
+
 actualizarCarrito();

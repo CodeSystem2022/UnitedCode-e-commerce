@@ -2,11 +2,6 @@
   background-color: white;
 }
 
-.carrito h3 {
-  padding: 20px;
-  font-size: 25px;
-  text-align:center;
-}
 
 .carrito .container {
   padding: 50px;
@@ -75,19 +70,7 @@
   padding: 10em;
   text-align: center;
   margin: 0 auto;
-}*/
-
-.carrito button {
-  width: 200px;
-  background-color: #e50e0e;
-  color: #fff;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
 }
-
-
 
 .carrito .product {
   display: flex;
@@ -123,6 +106,14 @@
   margin-top: 10px;
   text-align: center;
 }
+.carrito .tarjeta button {
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  border: unset;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
 .carrito .tarjeta img {
   max-width: 80%;
@@ -140,6 +131,12 @@
 
 .carrito h2 {
   padding: 20px;
+}
+
+.carrito .totalAmount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn-primary {
