@@ -85,7 +85,9 @@ const calcularTotal = (producto) => {
 function actualizarCarrito() {
   total = calcularTotal(productosCarrito);
   if (total === 0) {
-    document.querySelector(".totalAmount").innerText = `Tu carrito se encuentra vacío`;
+    document.querySelector(
+      ".totalAmount"
+    ).innerText = `Tu carrito se encuentra vacío`;
   } else {
     document.querySelector(".totalAmount").innerText = `Total: $${total}`;
   }
@@ -118,7 +120,6 @@ if (localStorage.carrito) {
               </div>
             </div>
           `;
-
           productosCarrito.push({
             id: producto.id,
             nombre: producto.nombre,
@@ -139,9 +140,8 @@ if (localStorage.carrito) {
               productosCarrito[index].cantidad++;
               quantityElement.innerText = productosCarrito[index].cantidad;
               actualizarCarrito();
-              
-              count.innerText = productoEnElCarrito();
               localStorage.setItem("carrito", JSON.stringify(productosCarrito));
+              count.innerText = productoEnElCarrito();
             }
           });
 
@@ -153,9 +153,8 @@ if (localStorage.carrito) {
               productosCarrito[index].cantidad--;
               quantityElement.innerText = productosCarrito[index].cantidad;
               actualizarCarrito();
-              
-              count.innerText = productoEnElCarrito();
               localStorage.setItem("carrito", JSON.stringify(productosCarrito));
+              count.innerText = productoEnElCarrito();
             }
           });
 
@@ -176,19 +175,18 @@ if (localStorage.carrito) {
       })
       .then(() => {
         actualizarCarrito();
+        count.innerText = productoEnElCarrito();
       });
-      const productoEnElCarrito = () => {
-        return localStorage.carrito
-          ? JSON.parse(localStorage.carrito).reduce(
-              (total, prod) => total + prod.cantidad,
-              0
-            )
-          : 0;
-      };
-      
-      
+
+    const productoEnElCarrito = () => {
+      return localStorage.carrito
+        ? JSON.parse(localStorage.carrito).reduce(
+            (total, prod) => total + prod.cantidad,
+            0
+          )
+        : 0;
+    };
   });
 }
-
 
 actualizarCarrito();
