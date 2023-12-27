@@ -1,32 +1,32 @@
 const productos = [
     {
       id: 1,
-      productName: "Producto1",
-      price: 480,
+      productName: "Pantalon",
+      price: 9000,
       quanty: 1,
-      img: "/images/products/producto1.jpg"
+      img: "/images/products/Pantalon.jpg"
       ,
     },
     {
       id: 2,
-      productName: "Producto2",
-      price: 950,
+      productName: "Vestido",
+      price: 12000,
       quanty: 1,
-      img: "/images/products/producto2.jpg",
+      img: "/images/products/Vestido.jpg",
     },
     {
       id: 3,
-      productName: "Producto3",
-      price: 750,
+      productName: "Chaqueta",
+      price: 10000,
       quanty: 1,
-      img: "/images/products/producto3.jpg",
+      img: "/images/products/Chaqueta.jpg",
     },
     {
       id: 4,
-      productName: "Producto4",
-      price: 510,
+      productName: "Conjunto",
+      price: 15000,
       quanty: 1,
-      img: "/images/products/producto4.jpg",
+      img: "/images/products/Conjunto.jpg",
     },
   ];
   

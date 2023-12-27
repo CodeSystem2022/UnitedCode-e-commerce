@@ -73,6 +73,11 @@ body {
     margin-right: 10px; /* Separa los iconos */
 }
 
+.user-button a {
+    color: grey;
+    
+}
+
 .cart-counter {
     display: none;
     position: static;
