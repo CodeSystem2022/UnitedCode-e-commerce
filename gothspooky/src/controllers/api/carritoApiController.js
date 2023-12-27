@@ -1,10 +1,11 @@
 const mercadopago = require("mercadopago");
 require('dotenv').config();
+const db = require('../../database/models');
 
 // REPLACE WITH YOUR ACCESS TOKEN AVAILABLE IN: https://developers.mercadopago.com/panel
 //Token en .env
 mercadopago.configure({
-	access_token: process.env.ACCESS_TOKEN_MP,
+	access_token: "",
 });
 
 const controller = {
@@ -43,6 +44,32 @@ const controller = {
             Status: req.query.status,
             MerchantOrder: req.query.merchant_order_id
         });
+    },
+    prod: async (req, res) => {
+        try {
+            // Obtener el ID del producto desde los parámetros de la solicitud
+            const productId = req.params.id;
+
+            // Buscar el producto en la base de datos utilizando Sequelize
+            const producto = await db.Producto.findByPk(productId, {
+                include: [
+                    { model: db.Imagen,
+                        as: "imagen" 
+                    }
+                ]
+            });
+
+            // Verificar si el producto existe
+            if (!producto) {
+                return res.status(404).json({ error: 'Producto no encontrado' });
+            }
+
+            // Enviar el producto como respuesta
+            res.json(producto);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Error interno del servidor' });
+        }
     }
 };
 
