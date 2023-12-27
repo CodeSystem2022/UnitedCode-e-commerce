@@ -190,3 +190,18 @@ if (localStorage.carrito) {
 }
 
 actualizarCarrito();
+
+const guardarDatos = () => {
+  let usuario = {
+    nombre: document.getElementById("nombre").value,
+    apellido: document.getElementById("apellido").value,
+    email: document.getElementById("email").value,
+    telefono: document.getElementById("telefono").value,
+    dni: document.getElementById("dni").value,
+    domicilio: document.getElementById("domicilio").value,
+    codigopostal: document.getElementById("codigopostal").value
+  }
+  console.log(usuario)
+  
+}
+
